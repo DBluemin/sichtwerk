@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SICHTWERK — Site verbinden (Live-Analyse)</title>
+<title>NENNWERT SEO-Cockpit — Site verbinden (Live-Analyse)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -57,9 +57,9 @@
     <header class="page-head">
       <div>
         <h1>Site verbinden</h1>
-        <div class="lede">Das Control-Plane-Prinzip: Eine Domain wird angebunden, SICHTWERK crawlt und analysiert sie wirklich — und legt konkrete Maßnahmen ins Fließband. Stufe 1 (Analyse ohne Zugriff) läuft hier live.</div>
+        <div class="lede">Das Control-Plane-Prinzip: Eine Domain wird angebunden, das SEO-Cockpit crawlt und analysiert sie wirklich — und legt konkrete Maßnahmen ins Fließband. Stufe 1 (Analyse ohne Zugriff) läuft hier live.</div>
       </div>
-      <div class="page-meta">Crawler: <b>SichtwerkBot/0.1</b> · max. <b>8 Seiten</b> pro Lauf<br>robots.txt wird respektiert · sequenziell mit Pause</div>
+      <div class="page-meta">Crawler: <b>NennwertBot/0.1</b> · max. <b>8 Seiten</b> pro Lauf<br>robots.txt wird respektiert · sequenziell mit Pause</div>
     </header>
 
     <section class="panel" aria-label="Domain verbinden" style="margin-top:8px">
@@ -80,8 +80,8 @@
       <section class="scores four" style="margin-top:14px" aria-label="Live-Scores">
         <div class="score"><div class="score-label">Technik</div><div class="score-row"><span class="score-val" id="sTechnik">–</span></div><div class="score-vs">aus echtem Crawl berechnet</div></div>
         <div class="score"><div class="score-label">Content</div><div class="score-row"><span class="score-val" id="sContent">–</span></div><div class="score-vs">Titel, Descriptions, Struktur, Alt-Texte</div></div>
-        <div class="score"><div class="score-label">AEO</div><div class="score-row"><span class="score-val" id="sAeo">–</span></div><div class="score-vs">Fragen-Struktur + Schema</div></div>
-        <div class="score"><div class="score-label">GEO / KI</div><div class="score-row"><span class="score-val" id="sGeo">–</span></div><div class="score-vs">llms.txt, KI-Bots, Zitierfähigkeit</div></div>
+        <div class="score"><div class="score-label">AEO-Bereitschaft</div><div class="score-row"><span class="score-val" id="sAeo">–</span></div><div class="score-vs">Quelle: Crawl — ob Antworten zitierfähig strukturiert sind</div></div>
+        <div class="score"><div class="score-label">GEO-Bereitschaft</div><div class="score-row"><span class="score-val" id="sGeo">–</span></div><div class="score-vs">Quelle: Crawl — ob KI-Systeme lesen &amp; zitieren können. Ob sie es TUN, misst das NENNWERT-Panel.</div></div>
       </section>
 
       <section class="panel" aria-label="Site-Checks">
@@ -103,6 +103,11 @@
       </section>
     </div>
 
+    <section class="panel" id="verifyPanel" aria-label="Domain verifizieren" style="display:none">
+      <div class="panel-head"><div><div class="panel-title">Stufe 2: Domain verifizieren</div><div class="panel-sub">Inhaberschaft nachweisen — Voraussetzung für jeden schreibenden Konnektor. Die Prüfung läuft echt (DNS-Abfrage + Datei-Abruf).</div></div></div>
+      <div class="prof" id="verifyBody"></div>
+    </section>
+
     <section class="panel" aria-label="Verbindungswege">
       <div class="panel-head"><div><div class="panel-title">Die drei Verbindungsstufen</div><div class="panel-sub">Vom Lesen zum Schreiben — so wird aus der Analyse ein Autopilot</div></div></div>
       <div class="way">
@@ -111,8 +116,8 @@
           <div class="w-desc">Öffentliches Crawling wie hier. Findet Probleme, generiert Vorschläge — ausspielen kann es nichts. Der Einstieg für jede Beispiel-Domain.</div>
         </div>
         <div class="way-card">
-          <div class="w-name"><span class="tag tag-meas">Produkt</span> 2 · CMS-Konnektor</div>
-          <div class="w-desc">Nach Domain-Verifizierung (DNS-TXT oder Datei) verbindet sich SICHTWERK per API mit WordPress/Shopify &amp; Co. Jede freigegebene Maßnahme wird als echte, versionierte Revision geschrieben — rückholbar.</div>
+          <div class="w-name"><span class="tag tag-meas">Plugin fertig</span> 2 · CMS-Konnektor</div>
+          <div class="w-desc">Nach Domain-Verifizierung verbindet sich das Cockpit per API mit dem CMS. Für WordPress (der Agentur-Standardfall) liegt der Konnektor als installierbares Plugin bereit: <a href="wordpress-plugin/nennwert-seo-connector.php" download style="color:var(--measure)">nennwert-seo-connector.php ↓</a> — Agentur installiert, Site-Schlüssel eintragen, fertig. Jede Maßnahme wird als echte Revision geschrieben, rückholbar.</div>
         </div>
         <div class="way-card">
           <div class="w-name"><span class="tag tag-meas">Produkt</span> 3 · Edge-Layer</div>
@@ -133,7 +138,7 @@ WERK.init({
     context: "Site verbinden — Live-Analyse",
     chips: ["Wie verbindet sich eine Kunden-Site?", "Was passiert nach der Analyse?"],
     canned: {
-      "wie verbindet sich eine kunden-site?": "Dreistufig: (1) Analyse ohne Zugriff — nur die Domain eingeben, wie hier. (2) Domain verifizieren (DNS-TXT oder Datei-Upload), dann CMS-Konnektor autorisieren — ab da schreibt SICHTWERK echte Revisionen. (3) Optional Edge-Layer für Systeme ohne CMS. Der Kunde bleibt jederzeit Herr der Domain: Konnektor trennen genügt, alle Änderungen liegen als Revisionen im eigenen CMS.",
+      "wie verbindet sich eine kunden-site?": "Dreistufig: (1) Analyse ohne Zugriff — nur die Domain eingeben, wie hier. (2) Domain verifizieren (DNS-TXT oder Datei-Upload), dann CMS-Konnektor autorisieren — ab da schreibt das Cockpit echte Revisionen. (3) Optional Edge-Layer für Systeme ohne CMS. Der Kunde bleibt jederzeit Herr der Domain: Konnektor trennen genügt, alle Änderungen liegen als Revisionen im eigenen CMS.",
       "was passiert nach der analyse?": "Jedes Finding hier ist bereits ein halbfertiges Change-Set: Klick auf „Ins Fließband legen“ und es wartet unter Maßnahmen auf Freigabe. Im Produkt hängt dahinter der Publish-Weg über den Konnektor — mit Snapshot, Messfenster und Rollback.",
     },
   },
@@ -159,7 +164,7 @@ form.addEventListener("submit", async (e) => {
   goBtn.disabled = true;
   results.classList.remove("show");
   apiHint.classList.remove("show");
-  setStatus("SichtwerkBot crawlt " + domain + " — robots.txt, Startseite, bis zu 7 Unterseiten … (10–30 s)");
+  setStatus("NennwertBot crawlt " + domain + " — robots.txt, Startseite, bis zu 7 Unterseiten … (10–30 s)");
   try {
     const res = await fetch("/api/analyze?url=" + encodeURIComponent(domain));
     if (!res.ok) {
@@ -243,6 +248,57 @@ function render(d) {
     })
   );
   results.classList.add("show");
+
+  /* Live-Kontext für alle Cockpit-Seiten persistieren */
+  WERK.setLive({
+    host: d.host, fetchedAt: d.fetchedAt, scores: d.scores, spa: d.spa,
+    robotsFound: d.robotsFound, sitemap: d.sitemap, llmsTxt: d.llmsTxt, aiBots: d.aiBots,
+    findings: d.findings.length,
+    pages: d.pages.map((p) => ({ url: p.url, status: p.status, titleLen: p.titleLen, descLen: p.descLen, h1Count: p.h1Count, imgs: p.imgs, imgsNoAlt: p.imgsNoAlt, words: p.words, schemaTypes: p.schemaTypes, title: p.title, shell: p.shell })),
+  });
+  const tb = document.getElementById("topbarRoot");
+  if (tb) tb.innerHTML = WERK.topbarHtml();
+  initVerify(d.host);
+}
+
+/* ==== Stufe 2: Domain-Verifizierung (echt) ==== */
+async function initVerify(host) {
+  const panel = document.getElementById("verifyPanel");
+  const body = document.getElementById("verifyBody");
+  panel.style.display = "";
+  try {
+    const r = await fetch("/api/verify/start?domain=" + encodeURIComponent(host));
+    const v = await r.json();
+    if (v.error) { body.innerHTML = '<div class="prof-sec" style="color:var(--crit)">' + esc(v.error) + "</div>"; return; }
+    body.innerHTML =
+      '<div class="prof-sec"><div class="prof-label">Ihr Verifizierungs-Token</div>' +
+      '<div class="kv"><span class="v mono" style="color:var(--act)">nennwert-verify=' + esc(v.token) + "</span></div></div>" +
+      '<div class="prof-sec"><div class="prof-label">Weg A — DNS-TXT-Record</div>' +
+      '<div class="kv"><span class="v mono">_nennwert.' + esc(v.host) + ' &nbsp;TXT&nbsp; "nennwert-verify=' + esc(v.token) + '"</span></div></div>' +
+      '<div class="prof-sec"><div class="prof-label">Weg B — Datei</div>' +
+      '<div class="kv"><span class="v mono">https://' + esc(v.host) + "/nennwert-verify.txt mit dem Token als Inhalt</span></div></div>" +
+      '<div class="prof-sec" style="display:flex;gap:10px;align-items:center">' +
+      '<button class="btn btn-primary" id="verifyCheckBtn">Jetzt prüfen</button>' +
+      '<span id="verifyResult" class="chips" style="margin:0"></span></div>';
+    document.getElementById("verifyCheckBtn").addEventListener("click", async () => {
+      const btn = document.getElementById("verifyCheckBtn");
+      btn.disabled = true; btn.textContent = "Prüfe DNS + Datei …";
+      try {
+        const cr = await fetch("/api/verify/check?domain=" + encodeURIComponent(host));
+        const c = await cr.json();
+        document.getElementById("verifyResult").innerHTML =
+          '<span class="chip ' + (c.methods.dns ? "ok" : "warn") + '"><i></i>DNS-TXT: ' + (c.methods.dns ? "gefunden" : "nicht gefunden") + "</span>" +
+          '<span class="chip ' + (c.methods.file ? "ok" : "warn") + '"><i></i>Datei: ' + (c.methods.file ? "gefunden" : "nicht gefunden") + "</span>" +
+          (c.verified ? '<span class="chip ok"><i></i>Domain verifiziert ✓</span>' : "");
+        if (c.verified) WERK.agentNote("Domain " + host + " verifiziert — der CMS-Konnektor kann jetzt autorisiert werden (WordPress-Plugin installieren, Site-Schlüssel eintragen).");
+      } catch (e) {
+        document.getElementById("verifyResult").innerHTML = '<span class="chip bad"><i></i>Prüfung fehlgeschlagen</span>';
+      }
+      btn.disabled = false; btn.textContent = "Jetzt prüfen";
+    });
+  } catch (e) {
+    body.innerHTML = '<div class="prof-sec" style="color:var(--ink-3)">Verifizierung braucht den lokalen Server.</div>';
+  }
 }
 </script>
 </body>

@@ -2,12 +2,25 @@
 
 **Ein DentalConnect Produkt · Enterprise-Konzept: SEO · AEO · GEO — von der Analyse zur automatischen Umsetzung**
 
-**Positionierung:** Subprodukt im DentalConnect-Ökosystem (Namensfamilie zu NENNWERT),
-eigenständig lauffähig und einzeln verkaufbar. Die KI-Zitationsmessung läuft über die
-**NENNWERT-Engine** (nennwert.dental-connect.eu, EU/Amsterdam, Fehlinfo-Verifizierung) —
-SICHTWERK optimiert, NENNWERT misst. Vertikaler Fokus Dental (HWG-Prüfer, Praxis-Benchmarks,
-Distribution über das DC-Praxenverzeichnis), Architektur aber branchenneutral.
-Wettbewerbs-Delta und Preisidee: siehe `WETTBEWERB.md`.
+**Positionierung (Stand 02.08.2026): ein Produkt, eine Marke — NENNWERT.**
+Das SEO-Cockpit ist ein Modul unter der NENNWERT-Marke (eigener Einstieg neben der
+Messung, gleiche CI: Apex-N-Logo, Cyan/Mint, tiefes Navy). Arbeitsname „SICHTWERK"
+lebt nur noch im Repo-Namen weiter. Vertikaler Fokus Dental (HWG-Prüfer,
+Praxis-Benchmarks, Distribution über das DC-Praxenverzeichnis), Architektur
+branchenneutral. Wettbewerbs-Delta und Preisidee: siehe `WETTBEWERB.md`.
+
+**Metrik-Vertrag Cockpit ↔ NENNWERT-Messung** (verhindert widersprüchliche Zahlen):
+
+| Kennzahl | Quelle | Bedeutung |
+|---|---|---|
+| **AEO-/GEO-Bereitschaft** (0–100) | Cockpit-Crawl, deterministisch | *Kann* die Site zitiert werden? (llms.txt, KI-Bot-Freigaben, Schema, Antwortstruktur, SSR) |
+| **KI-Zitationsrate** (% ± Konfidenz) | NENNWERT-Prompt-Panel | *Wird* sie tatsächlich zitiert? |
+| **GEO-Gesamt** (nur wenn beide Quellen vorhanden) | 40 % Bereitschaft + 60 % normierte Zitationsrate | Management-Sicht |
+
+Bereitschaft und Ergebnis dürfen auseinanderlaufen — das ist Diagnose, kein Widerspruch:
+hohe Bereitschaft + niedrige Zitationsrate = Inhalte fehlen oder sind zu jung;
+niedrige Bereitschaft + hohe Rate = Marke trägt trotz Technik. Jede Kennzahl trägt im
+UI ihr Quellen-Label; ohne Live-Quelle wird „Demo" angezeigt, niemals gemischt.
 
 > Kernprinzip: **Die Maschine erkennt, generiert und misst. Live geht nur, was ein Mensch freigibt.**
 > Jede Änderung ist versioniert, begründet und per Klick rückholbar. Keine Ranking-Garantien —

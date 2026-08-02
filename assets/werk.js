@@ -51,8 +51,11 @@
   function renderNav(active) {
     const el = document.getElementById("navRoot");
     if (!el) return;
-    let h = '<a class="brand" href="dashboard.html"><div class="brand-mark" aria-hidden="true"></div><div class="brand-name">SICHTWERK</div></a>';
-    h += '<div class="brand-by">ein <b>DentalConnect</b> Produkt</div>';
+    let h =
+      '<a class="brand" href="dashboard.html" aria-label="NENNWERT SEO-Cockpit">' +
+      '<svg class="apex" viewBox="-14 -2 66 66" aria-hidden="true"><rect x="0" y="0" width="12" height="60" fill="#24B6E5"/><rect x="36" y="0" width="12" height="60" fill="#29297A"/><polygon points="0,0 48,60 36,60 -12,0" fill="#3BE8C8" opacity=".95"/></svg>' +
+      '<span class="wordmark"><span class="wm-line"><i>NENN</i><b>WERT</b></span><small>SEO-COCKPIT · BY DENTALCONNECT</small></span></a>';
+    h += '<div class="mod-switch"><a class="mod" href="https://nennwert.dental-connect.eu" target="_blank" rel="noopener">Messung ↗</a><span class="mod active">SEO-Cockpit</span></div>';
     NAV.forEach((n) => {
       if (n.group) { h += '<div class="nav-group-label">' + n.group + "</div>"; return; }
       h += '<a class="nav-item' + (n.id === active ? " active" : "") + '" href="' + n.href + '">' + svgIcon(n.icon) +
@@ -354,6 +357,47 @@
       r.display + "</span></div>").join("");
   };
 
+  /* ================= Live-Kontext (letzte echte Analyse) ================= */
+  const LIVE_KEY = "sichtwerk.live";
+  WERK.live = (function () {
+    try { return JSON.parse(localStorage.getItem(LIVE_KEY)); } catch (e) { return null; }
+  })();
+  WERK.setLive = function (data) {
+    try { localStorage.setItem(LIVE_KEY, JSON.stringify(data)); } catch (e) {}
+    WERK.live = data;
+  };
+  WERK.clearLive = function () {
+    try { localStorage.removeItem(LIVE_KEY); } catch (e) {}
+    WERK.live = null;
+    location.reload();
+  };
+  function renderLiveBanner(page) {
+    if (!WERK.live || page === "verbinden") return;
+    const head = document.querySelector(".page-head");
+    if (!head) return;
+    const d = WERK.live;
+    const div = document.createElement("div");
+    div.className = "live-banner";
+    div.innerHTML =
+      '<span class="lb-dot"></span>Verbunden: <b>' + d.host + "</b>" +
+      '<span>· ' + d.pages.length + " Seiten analysiert " + new Date(d.fetchedAt).toLocaleString("de-DE", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) + "</span>" +
+      '<span class="lb-note">· Kennzahlen ohne Live-Quelle (Rankings, KI-Zitationen) sind als Demo markiert</span>' +
+      '<a href="verbinden.html">Neu analysieren</a>' +
+      '<button type="button" title="Live-Verbindung trennen" onclick="WERK.clearLive()">Trennen ✕</button>';
+    head.insertAdjacentElement("afterend", div);
+  }
+  /* Demo-Kennzeichnung: Panel-Titel bekommt ein dezentes Tag */
+  WERK.markDemo = function (selector) {
+    if (!WERK.live) return;
+    document.querySelectorAll(selector).forEach((el) => {
+      const t = document.createElement("span");
+      t.className = "tag tag-mut";
+      t.style.marginLeft = "8px";
+      t.textContent = "Demo";
+      el.appendChild(t);
+    });
+  };
+
   /* ================= Fix-Buttons (Finding → Change-Set) ================= */
   WERK.bindFixButtons = function () {
     document.querySelectorAll("[data-fix]").forEach((btn) =>
@@ -379,15 +423,64 @@
   /* ================= Topbar-Bausteine ================= */
   WERK.topbarHtml = function (opts) {
     opts = opts || {};
+    const projName = WERK.live ? WERK.live.host : "smiledental-gruppe.de (Demo)";
     return (
-      '<button class="proj"><span class="proj-fav"></span> smiledental-gruppe.de <span class="chev">▾</span></button>' +
+      '<button class="proj"><span class="proj-fav"' + (WERK.live ? ' style="background:var(--good)"' : "") + '></span> ' + projName + ' <span class="chev">▾</span></button>' +
       '<div class="search" role="search"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="m13.5 13.5-3.2-3.2"/></svg>' +
-      '<span class="q">URL, Keyword oder Befehl suchen …</span> <kbd>⌘K</kbd></div>' +
+      '<input id="globalSearch" type="text" placeholder="Suchen: Seite, URL, Keyword …" autocomplete="off"> <kbd>⌘K</kbd>' +
+      '<div class="search-drop" id="searchDrop"></div></div>' +
       '<div class="crawl-chip"><span class="pulse"></span> Crawl läuft · <b data-crawl>4.812&thinsp;/&thinsp;6.240</b> Seiten</div>' +
       '<button class="btn btn-ghost">Neuer Crawl</button>' +
       '<button class="btn btn-primary" onclick="WERK.focusAgent()">Agent fragen</button>'
     );
   };
+  /* ================= Globale Suche (⌘K) ================= */
+  function searchIndex() {
+    const idx = [];
+    NAV.forEach((n) => { if (!n.group) idx.push({ label: n.label, hint: "Seite", href: n.href }); });
+    idx.push(
+      { label: "/behandlungen/zahnimplantate", hint: "URL · Detail", href: "url-detail.html" },
+      { label: "zahnimplantat kosten", hint: "Keyword · Pos. 4", href: "keywords.html" },
+      { label: "zahnimplantate münchen", hint: "Keyword · Pos. 3", href: "keywords.html" },
+      { label: "invisalign münchen", hint: "Keyword · Chance", href: "keywords.html" },
+      { label: "Antwortbox-Chancen", hint: "AEO", href: "aeo.html" },
+      { label: "KI-Zitationen je System", hint: "GEO · NENNWERT", href: "geo.html" },
+      { label: "Autopilot-Stufe", hint: "Einstellung", href: "einstellungen.html" },
+      { label: "Live-Analyse starten", hint: "Site verbinden", href: "verbinden.html" }
+    );
+    if (WERK.live) {
+      WERK.live.pages.forEach((p) => {
+        try { const x = new URL(p.url); idx.push({ label: x.pathname === "/" ? x.host : x.pathname, hint: "Live · " + WERK.live.host, href: "content.html" }); } catch (e) {}
+      });
+    }
+    return idx;
+  }
+  function bindSearch() {
+    const inp = document.getElementById("globalSearch");
+    const drop = document.getElementById("searchDrop");
+    if (!inp || !drop) return;
+    const idx = searchIndex();
+    let items = [];
+    function close() { drop.classList.remove("show"); }
+    function renderDrop(q) {
+      const needle = q.trim().toLowerCase();
+      items = needle ? idx.filter((i) => i.label.toLowerCase().includes(needle)).slice(0, 7) : [];
+      if (!items.length) { close(); return; }
+      drop.innerHTML = items.map((i, n) =>
+        '<a class="sd-item' + (n === 0 ? " first" : "") + '" href="' + i.href + '"><span>' + i.label + '</span><small>' + i.hint + "</small></a>").join("");
+      drop.classList.add("show");
+    }
+    inp.addEventListener("input", () => renderDrop(inp.value));
+    inp.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && items.length) { e.preventDefault(); location.href = items[0].href; }
+      if (e.key === "Escape") { inp.blur(); close(); }
+    });
+    inp.addEventListener("blur", () => setTimeout(close, 180));
+    document.addEventListener("keydown", (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") { e.preventDefault(); inp.focus(); }
+    });
+  }
+
   function tickCrawl() {
     const el = document.querySelector("[data-crawl]");
     if (!el) return;
@@ -407,6 +500,8 @@
     if (tb) tb.innerHTML = WERK.topbarHtml();
     WERK.updateBadge();
     tickCrawl();
+    bindSearch();
     document.querySelectorAll("[data-spark]").forEach(WERK.spark);
+    renderLiveBanner(opts.page);
   };
 })();

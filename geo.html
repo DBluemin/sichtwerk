@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SICHTWERK — GEO / KI-Zitationen</title>
+<title>NENNWERT SEO-Cockpit — GEO / KI-Zitationen</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,10 +30,12 @@
       <span class="mono">nennwert.dental-connect.eu · Region EU (Amsterdam) · letzte Stichprobe heute, 05:30 · Fehlinfo-Verifizierung aktiv</span>
     </div>
 
+    <div id="liveSlot"></div>
+
     <section class="panel" aria-label="Zitationsentwicklung" style="margin-top:14px">
       <div class="panel-head">
         <div>
-          <div class="panel-title">Zitationsrate im Wettbewerb</div>
+          <div class="panel-title" id="citeTitle">Zitationsrate im Wettbewerb <span class="cnt">Quelle: NENNWERT-Panel</span></div>
           <div class="panel-sub">Anteil der Prompt-Stichproben, in denen die Domain zitiert wird — Monatsmittel</div>
         </div>
       </div>
@@ -118,6 +120,23 @@ WERK.hbars(document.getElementById("engines"), [
   { label: "Claude", val: 6, max: 30, display: "6 %" },
 ]);
 WERK.bindFixButtons();
+
+/* ==== Live: GEO-Bereitschaft der verbundenen Domain (Quelle: Crawl) ==== */
+if (WERK.live) {
+  const L = WERK.live;
+  const chip = (ok, a, b) => '<span class="chip ' + (ok ? "ok" : "warn") + '"><i></i>' + (ok ? a : b) + "</span>";
+  let chips = chip(L.llmsTxt, "llms.txt vorhanden", "llms.txt fehlt") + chip(L.sitemap, "sitemap.xml vorhanden", "sitemap.xml fehlt");
+  Object.entries(L.aiBots || {}).forEach(([bot, s]) => { chips += '<span class="chip ' + (s === "erlaubt" ? "ok" : "bad") + '"><i></i>' + bot + ": " + s + "</span>"; });
+  document.getElementById("liveSlot").innerHTML =
+    '<section class="panel" style="margin-top:14px"><div class="panel-head"><div>' +
+    '<div class="panel-title">Live: GEO-Bereitschaft ' + L.host + ' <span class="cnt">' + (L.scores ? L.scores.geo : "—") + ' / 100 · Quelle: Crawl</span></div>' +
+    '<div class="panel-sub">Bereitschaft = kann zitiert werden. Ob tatsächlich zitiert wird, misst das NENNWERT-Panel — beide Zahlen dürfen auseinanderlaufen, das ist die Diagnose.</div></div></div>' +
+    '<div class="panel-body"><div class="chips" style="margin-top:0">' + chips + "</div>" +
+    (L.spa ? '<div style="margin-top:10px;font-size:12px;color:var(--crit)">⚠ SPA ohne Server-Rendering: ' + L.spa.routes + " Routen liefern identisches HTML (" + L.spa.words + " Wörter) — KI-Bots sehen die Inhalte nicht. Wichtigster GEO-Hebel dieser Domain.</div>" : "") +
+    "</div></section>";
+  WERK.markDemo("#citeTitle");
+  WERK.markDemo('section[aria-label="Engine-Aufschlüsselung"] .panel-title, section[aria-label="Prompt-Panel"] .panel-title');
+}
 </script>
 </body>
 </html>

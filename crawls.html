@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SICHTWERK — Crawls &amp; Technik</title>
+<title>NENNWERT SEO-Cockpit — Crawls &amp; Technik</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -38,6 +38,8 @@
       <div class="score"><div class="score-label">Technik-Score</div><div class="score-row"><span class="score-val">84</span><span class="score-delta up">▲ 6</span></div><div class="score-vs">Ø Branche Dental: 61</div></div>
       <div class="score"><div class="score-label">Crawlbudget-Effizienz</div><div class="score-row"><span class="score-val">78<small>%</small></span><span class="score-delta down">▼ 4</span></div><div class="score-vs">robots-Konflikt drückt den Wert</div></div>
     </section>
+
+    <div id="liveSlot"></div>
 
     <div class="duo-even">
       <section class="panel" aria-label="Indexierungs-Trichter">
@@ -119,6 +121,25 @@ document.querySelectorAll("[data-fix]").forEach((btn) =>
     }, 900);
   })
 );
+
+/* ==== Live-Crawl-Status der verbundenen Domain ==== */
+if (WERK.live) {
+  const L = WERK.live;
+  const ok = L.pages.filter((p) => p.status === 200).length;
+  const chip = (c, t) => '<span class="chip ' + c + '"><i></i>' + t + "</span>";
+  document.getElementById("liveSlot").innerHTML =
+    '<section class="panel"><div class="panel-head"><div>' +
+    '<div class="panel-title">Live: ' + L.host + ' <span class="cnt">Stichprobe ' + L.pages.length + " Seiten · Quelle: Crawl</span></div>" +
+    '<div class="panel-sub">Voll-Crawl mit Rendering folgt im Produkt — dies ist die Schnellanalyse</div></div></div>' +
+    '<div class="panel-body"><div class="chips" style="margin-top:0">' +
+    chip(ok === L.pages.length ? "ok" : "warn", ok + "/" + L.pages.length + " Seiten erreichbar") +
+    chip(L.robotsFound ? "ok" : "warn", L.robotsFound ? "robots.txt vorhanden" : "robots.txt fehlt") +
+    chip(L.sitemap ? "ok" : "warn", L.sitemap ? "sitemap.xml vorhanden" : "sitemap.xml fehlt") +
+    (L.spa ? chip("bad", "SPA-Hülle: " + L.spa.routes + " Routen identisch") : "") +
+    "</div></div></section>";
+  document.querySelectorAll(".panel-title").forEach((el, i) => { if (i > 0) return; });
+  WERK.markDemo('section[aria-label="Indexierungs-Trichter"] .panel-title, section[aria-label="Core Web Vitals"] .panel-title, section[aria-label="Technik-Findings"] .panel-title, section[aria-label="Crawl-Verlauf"] .panel-title');
+}
 </script>
 </body>
 </html>

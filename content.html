@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SICHTWERK — Content</title>
+<title>NENNWERT SEO-Cockpit — Content</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -42,8 +42,10 @@
       <div class="score"><div class="score-label">Ohne Autorenprofil</div><div class="score-row"><span class="score-val">23</span><span class="score-delta down">▼ 3</span></div><div class="score-vs">EEAT-Fix liegt im Fließband</div></div>
     </section>
 
+    <div id="liveSlot"></div>
+
     <section class="panel" aria-label="Seitenliste">
-      <div class="panel-head"><div><div class="panel-title">Seiten <span class="cnt">1.412 · Top 8 nach Geschäftswert</span></div><div class="panel-sub">Klick auf eine URL öffnet die Detailansicht</div></div></div>
+      <div class="panel-head"><div><div class="panel-title" id="demoPagesTitle">Seiten <span class="cnt">1.412 · Top 8 nach Geschäftswert</span></div><div class="panel-sub">Klick auf eine URL öffnet die Detailansicht</div></div></div>
       <div class="filters">
         <select><option>Seitentyp: Alle</option><option>Behandlung</option><option>Standort</option><option>Ratgeber</option></select>
         <select><option>Score: Alle</option><option>&lt; 50</option><option>50–75</option><option>&gt; 75</option></select>
@@ -114,6 +116,21 @@ document.querySelectorAll("[data-fix]").forEach((btn) =>
     }, 900);
   })
 );
+
+/* ==== Live gecrawlte Seiten der verbundenen Domain ==== */
+if (WERK.live && WERK.live.pages) {
+  const escL = (s) => String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const su = (u) => { try { const x = new URL(u); return x.pathname === "/" ? x.host : x.pathname; } catch (e) { return u; } };
+  document.getElementById("liveSlot").innerHTML =
+    '<section class="panel"><div class="panel-head"><div><div class="panel-title">Live: ' + escL(WERK.live.host) +
+    ' <span class="cnt">' + WERK.live.pages.length + ' Seiten, echter Crawl</span></div>' +
+    '<div class="panel-sub">Messwerte aus der letzten Analyse' + (WERK.live.spa ? " · SPA-Hülle erkannt: Werte gelten für die App-Hülle aller Routen" : "") + "</div></div></div>" +
+    '<div class="tblwrap"><table class="tbl"><thead><tr><th>URL</th><th style="text-align:right">Status</th><th style="text-align:right">Titel (Z.)</th><th style="text-align:right">Desc (Z.)</th><th style="text-align:right">H1</th><th style="text-align:right">Bilder o. Alt</th><th style="text-align:right">Wörter</th></tr></thead><tbody>' +
+    WERK.live.pages.map((p) => "<tr><td class='mono'>" + escL(su(p.url)) + (p.shell ? " <span class='tag tag-warn'>Hülle</span>" : "") + "</td><td class='num'>" + p.status + "</td><td class='num'>" + (p.titleLen != null ? p.titleLen : "—") + "</td><td class='num'>" + (p.descLen != null ? p.descLen : "—") + "</td><td class='num'>" + (p.h1Count != null ? p.h1Count : "—") + "</td><td class='num'>" + (p.imgsNoAlt || 0) + "/" + (p.imgs || 0) + "</td><td class='num'>" + (p.words != null ? p.words : "—") + "</td></tr>").join("") +
+    "</tbody></table></div></section>";
+  WERK.markDemo("#demoPagesTitle");
+  WERK.markDemo('section[aria-label="Kannibalisierung"] .panel-title, section[aria-label="Veraltete Inhalte"] .panel-title');
+}
 </script>
 </body>
 </html>
