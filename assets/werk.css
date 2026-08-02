@@ -115,7 +115,8 @@ a { color: inherit; }
 .proj {
   display: flex; align-items: center; gap: 8px; background: var(--panel);
   border: 1px solid var(--line); border-radius: var(--r-sm); padding: 6px 12px;
-  font-weight: 600; white-space: nowrap; flex: none;
+  font-weight: 600; white-space: nowrap; flex: 0 1 auto; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; max-width: 260px;
 }
 .proj-fav { width: 8px; height: 8px; border-radius: 2px; background: var(--good); }
 .proj .chev { color: var(--ink-3); font-size: 10px; }
@@ -508,9 +509,14 @@ a { color: inherit; }
   .scores { grid-template-columns: repeat(3, 1fr); }
   .reports, .pilot { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 1330px) {
+/* Topbar-Platz: Nav (216) + Dock (336) essen 552px — Elemente früh genug abgeben */
+@media (max-width: 1680px) {
   .crawl-chip { display: none; }
+  .search { flex-basis: 240px; }
+}
+@media (max-width: 1400px) {
   .topbar .btn-ghost { display: none; }
+  .proj { max-width: 200px; }
 }
 @media (max-width: 1150px) {
   .app { grid-template-columns: 64px minmax(0,1fr); }

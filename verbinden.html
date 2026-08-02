@@ -209,7 +209,19 @@ function render(d) {
   document.getElementById("siteChips").innerHTML = chips;
 
   document.getElementById("pageCount").textContent = d.pages.length;
-  document.getElementById("pagesBody").innerHTML = d.pages.map((p) => {
+  /* Identische SPA-Hüllen zu EINER Zeile zusammenfassen statt 8 gleicher Zeilen */
+  const shellRows = d.pages.filter((p) => p.shell);
+  const restRows = d.pages.filter((p) => !p.shell);
+  let shellHtml = "";
+  if (shellRows.length >= 2) {
+    const s = shellRows[0];
+    shellHtml = "<tr><td class='mono'><b style='color:var(--warn)'>App-Hülle</b> — identisches HTML auf " + shellRows.length + " Routen:" +
+      "<div style='color:var(--ink-3);font-size:10.5px;margin-top:3px;line-height:1.6'>" + shellRows.map((p) => esc(shortUrl(p.url))).join(" · ") + "</div></td>" +
+      "<td class='num'>" + s.status + "</td><td class='num'>" + s.titleLen + "</td><td class='num'>" + s.descLen + "</td><td class='num'>" + s.h1Count + "</td>" +
+      "<td class='num'>" + s.imgsNoAlt + "/" + s.imgs + "</td><td class='num'>" + s.words + "</td>" +
+      "<td>" + (s.schemaTypes || []).map((t) => '<span class="schema-chip">' + esc(t) + "</span>").join("") + "</td></tr>";
+  }
+  document.getElementById("pagesBody").innerHTML = shellHtml + (shellRows.length >= 2 ? restRows : d.pages).map((p) => {
     if (p.error) return "<tr><td class='mono'>" + esc(shortUrl(p.requested)) + "</td><td class='num tr-dn'>" + esc(p.error) + "</td><td class='num' colspan='6'>—</td></tr>";
     return "<tr><td class='mono'>" + esc(shortUrl(p.url)) + "</td>" +
       "<td class='num" + (p.hops > 1 ? " tr-dn" : "") + "'>" + p.status + (p.hops > 1 ? " (" + p.hops + " Hops)" : "") + "</td>" +

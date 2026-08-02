@@ -126,7 +126,14 @@ if (WERK.live && WERK.live.pages) {
     ' <span class="cnt">' + WERK.live.pages.length + ' Seiten, echter Crawl</span></div>' +
     '<div class="panel-sub">Messwerte aus der letzten Analyse' + (WERK.live.spa ? " · SPA-Hülle erkannt: Werte gelten für die App-Hülle aller Routen" : "") + "</div></div></div>" +
     '<div class="tblwrap"><table class="tbl"><thead><tr><th>URL</th><th style="text-align:right">Status</th><th style="text-align:right">Titel (Z.)</th><th style="text-align:right">Desc (Z.)</th><th style="text-align:right">H1</th><th style="text-align:right">Bilder o. Alt</th><th style="text-align:right">Wörter</th></tr></thead><tbody>' +
-    WERK.live.pages.map((p) => "<tr><td class='mono'>" + escL(su(p.url)) + (p.shell ? " <span class='tag tag-warn'>Hülle</span>" : "") + "</td><td class='num'>" + p.status + "</td><td class='num'>" + (p.titleLen != null ? p.titleLen : "—") + "</td><td class='num'>" + (p.descLen != null ? p.descLen : "—") + "</td><td class='num'>" + (p.h1Count != null ? p.h1Count : "—") + "</td><td class='num'>" + (p.imgsNoAlt || 0) + "/" + (p.imgs || 0) + "</td><td class='num'>" + (p.words != null ? p.words : "—") + "</td></tr>").join("") +
+    (function () {
+      const shell = WERK.live.pages.filter((p) => p.shell);
+      const rest = WERK.live.pages.filter((p) => !p.shell);
+      const row = (p) => "<tr><td class='mono'>" + escL(su(p.url)) + "</td><td class='num'>" + p.status + "</td><td class='num'>" + (p.titleLen != null ? p.titleLen : "—") + "</td><td class='num'>" + (p.descLen != null ? p.descLen : "—") + "</td><td class='num'>" + (p.h1Count != null ? p.h1Count : "—") + "</td><td class='num'>" + (p.imgsNoAlt || 0) + "/" + (p.imgs || 0) + "</td><td class='num'>" + (p.words != null ? p.words : "—") + "</td></tr>";
+      if (shell.length < 2) return WERK.live.pages.map(row).join("");
+      const s = shell[0];
+      return "<tr><td class='mono'><b style='color:var(--warn)'>App-Hülle</b> — identisch auf " + shell.length + " Routen:<div style='color:var(--ink-3);font-size:10.5px;margin-top:3px;line-height:1.6'>" + shell.map((p) => escL(su(p.url))).join(" · ") + "</div></td><td class='num'>" + s.status + "</td><td class='num'>" + s.titleLen + "</td><td class='num'>" + s.descLen + "</td><td class='num'>" + s.h1Count + "</td><td class='num'>" + (s.imgsNoAlt || 0) + "/" + (s.imgs || 0) + "</td><td class='num'>" + s.words + "</td></tr>" + rest.map(row).join("");
+    })() +
     "</tbody></table></div></section>";
   WERK.markDemo("#demoPagesTitle");
   WERK.markDemo('section[aria-label="Kannibalisierung"] .panel-title, section[aria-label="Veraltete Inhalte"] .panel-title');
