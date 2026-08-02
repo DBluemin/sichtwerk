@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — Site verbinden (Live-Analyse)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+<style>
+.connect {
+  display: flex; gap: 10px; padding: 16px; align-items: center; flex-wrap: wrap;
+}
+.connect input {
+  flex: 1; min-width: 240px; background: var(--inset); border: 1px solid var(--line);
+  border-radius: var(--r-sm); padding: 11px 14px; color: var(--ink);
+  font-family: var(--font-mono); font-size: 13.5px; outline: 0;
+}
+.connect input:focus { border-color: var(--measure); }
+.connect .btn-primary { padding: 11px 22px; font-size: 13px; }
+.connect-note { padding: 0 16px 14px; font-size: 11.5px; color: var(--ink-3); }
+.status {
+  display: none; padding: 0 16px 16px; font-size: 12.5px; color: var(--ink-2);
+  align-items: center; gap: 10px;
+}
+.status.show { display: flex; }
+.status .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--measure); animation: pulse 1.2s ease-in-out infinite; flex: none; }
+.status.err { color: var(--crit); }
+.status.err .pulse { background: var(--crit); animation: none; }
+#results { display: none; }
+#results.show { display: block; }
+.apihint {
+  display: none; margin: 0 16px 16px; padding: 12px 14px; border-radius: var(--r-sm);
+  background: var(--warn-dim); border: 1px solid rgba(217,160,60,.35); font-size: 12.5px; color: var(--ink-2);
+}
+.apihint.show { display: block; }
+.apihint code { font-family: var(--font-mono); color: var(--act); background: var(--inset); padding: 1px 7px; border-radius: 4px; }
+.way { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; padding: 12px 16px 16px; }
+.way-card { border: 1px solid var(--line-soft); border-radius: var(--r-sm); background: var(--inset); padding: 13px; }
+.way-card.on { border-color: rgba(69,196,134,.4); }
+.way-card .w-name { font-weight: 600; font-size: 13px; display: flex; gap: 8px; align-items: center; }
+.way-card .w-desc { font-size: 11.5px; color: var(--ink-2); margin-top: 5px; line-height: 1.5; }
+@media (max-width: 900px) { .way { grid-template-columns: 1fr; } }
+.prop { margin-top: 6px; background: var(--inset); border: 1px solid var(--line-soft); border-radius: var(--r-sm); padding: 7px 10px; font-size: 12px; overflow-wrap: anywhere; max-height: 130px; overflow-y: auto; }
+.prop del { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--crit); }
+.prop ins { color: var(--ink); text-decoration: none; background: var(--good-dim); border-radius: 3px; padding: 0 3px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <div>
+        <h1>Site verbinden</h1>
+        <div class="lede">Das Control-Plane-Prinzip: Eine Domain wird angebunden, SICHTWERK crawlt und analysiert sie wirklich — und legt konkrete Maßnahmen ins Fließband. Stufe 1 (Analyse ohne Zugriff) läuft hier live.</div>
+      </div>
+      <div class="page-meta">Crawler: <b>SichtwerkBot/0.1</b> · max. <b>8 Seiten</b> pro Lauf<br>robots.txt wird respektiert · sequenziell mit Pause</div>
+    </header>
+
+    <section class="panel" aria-label="Domain verbinden" style="margin-top:8px">
+      <div class="panel-head"><div><div class="panel-title">Live-Analyse starten</div><div class="panel-sub">Beispiel-Domain eingeben — z.&thinsp;B. example.com oder Ihre eigene Website</div></div></div>
+      <form class="connect" id="connectForm">
+        <input id="domainInput" type="text" placeholder="beispiel-praxis.de" autocomplete="off" spellcheck="false">
+        <button class="btn btn-primary" type="submit" id="goBtn">Analysieren</button>
+      </form>
+      <div class="connect-note">Es werden nur öffentlich erreichbare Seiten gelesen. Nichts wird an der Ziel-Website verändert — Ausspielung erfordert im Produkt Domain-Verifizierung + Konnektor.</div>
+      <div class="status" id="status"><span class="pulse"></span><span id="statusText"></span></div>
+      <div class="apihint" id="apiHint">
+        Die Analyse-API läuft nur mit dem lokalen Server (GitHub Pages kann nicht crawlen).
+        Lokal starten: <code>cd ~/seo-os && node server.js</code> → dann <code>http://localhost:8899/verbinden.html</code> öffnen.
+      </div>
+    </section>
+
+    <div id="results">
+      <section class="scores four" style="margin-top:14px" aria-label="Live-Scores">
+        <div class="score"><div class="score-label">Technik</div><div class="score-row"><span class="score-val" id="sTechnik">–</span></div><div class="score-vs">aus echtem Crawl berechnet</div></div>
+        <div class="score"><div class="score-label">Content</div><div class="score-row"><span class="score-val" id="sContent">–</span></div><div class="score-vs">Titel, Descriptions, Struktur, Alt-Texte</div></div>
+        <div class="score"><div class="score-label">AEO</div><div class="score-row"><span class="score-val" id="sAeo">–</span></div><div class="score-vs">Fragen-Struktur + Schema</div></div>
+        <div class="score"><div class="score-label">GEO / KI</div><div class="score-row"><span class="score-val" id="sGeo">–</span></div><div class="score-vs">llms.txt, KI-Bots, Zitierfähigkeit</div></div>
+      </section>
+
+      <section class="panel" aria-label="Site-Checks">
+        <div class="panel-head"><div><div class="panel-title">Site-Checks <span class="cnt" id="hostLabel"></span></div><div class="panel-sub" id="metaLabel"></div></div></div>
+        <div class="panel-body"><div class="chips" id="siteChips" style="margin-top:0"></div></div>
+      </section>
+
+      <section class="panel" aria-label="Gecrawlte Seiten">
+        <div class="panel-head"><div><div class="panel-title">Gecrawlte Seiten <span class="cnt" id="pageCount"></span></div><div class="panel-sub">Echte Messwerte aus diesem Lauf</div></div></div>
+        <div class="tblwrap"><table class="tbl">
+          <thead><tr><th>URL</th><th style="text-align:right">Status</th><th style="text-align:right">Titel (Z.)</th><th style="text-align:right">Desc (Z.)</th><th style="text-align:right">H1</th><th style="text-align:right">Bilder o. Alt</th><th style="text-align:right">Wörter</th><th>Schema</th></tr></thead>
+          <tbody id="pagesBody"></tbody>
+        </table></div>
+      </section>
+
+      <section class="panel" aria-label="Findings">
+        <div class="panel-head"><div><div class="panel-title">Findings <span class="cnt" id="findingCount"></span></div><div class="panel-sub">Jedes Finding mit generiertem Vorschlag — per Klick als Change-Set ins Fließband</div></div></div>
+        <div class="list" id="findingsList"></div>
+      </section>
+    </div>
+
+    <section class="panel" aria-label="Verbindungswege">
+      <div class="panel-head"><div><div class="panel-title">Die drei Verbindungsstufen</div><div class="panel-sub">Vom Lesen zum Schreiben — so wird aus der Analyse ein Autopilot</div></div></div>
+      <div class="way">
+        <div class="way-card on">
+          <div class="w-name"><span class="tag tag-good">Aktiv</span> 1 · Analyse ohne Zugriff</div>
+          <div class="w-desc">Öffentliches Crawling wie hier. Findet Probleme, generiert Vorschläge — ausspielen kann es nichts. Der Einstieg für jede Beispiel-Domain.</div>
+        </div>
+        <div class="way-card">
+          <div class="w-name"><span class="tag tag-meas">Produkt</span> 2 · CMS-Konnektor</div>
+          <div class="w-desc">Nach Domain-Verifizierung (DNS-TXT oder Datei) verbindet sich SICHTWERK per API mit WordPress/Shopify &amp; Co. Jede freigegebene Maßnahme wird als echte, versionierte Revision geschrieben — rückholbar.</div>
+        </div>
+        <div class="way-card">
+          <div class="w-name"><span class="tag tag-meas">Produkt</span> 3 · Edge-Layer</div>
+          <div class="w-desc">Für Systeme ohne CMS-Zugriff: Ein Proxy/Worker injiziert Meta, Schema und Links at-request-time. Fallback — Standard bleibt die echte CMS-Revision.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "verbinden",
+  dock: {
+    context: "Site verbinden — Live-Analyse",
+    chips: ["Wie verbindet sich eine Kunden-Site?", "Was passiert nach der Analyse?"],
+    canned: {
+      "wie verbindet sich eine kunden-site?": "Dreistufig: (1) Analyse ohne Zugriff — nur die Domain eingeben, wie hier. (2) Domain verifizieren (DNS-TXT oder Datei-Upload), dann CMS-Konnektor autorisieren — ab da schreibt SICHTWERK echte Revisionen. (3) Optional Edge-Layer für Systeme ohne CMS. Der Kunde bleibt jederzeit Herr der Domain: Konnektor trennen genügt, alle Änderungen liegen als Revisionen im eigenen CMS.",
+      "was passiert nach der analyse?": "Jedes Finding hier ist bereits ein halbfertiges Change-Set: Klick auf „Ins Fließband legen“ und es wartet unter Maßnahmen auf Freigabe. Im Produkt hängt dahinter der Publish-Weg über den Konnektor — mit Snapshot, Messfenster und Rollback.",
+    },
+  },
+});
+
+const form = document.getElementById("connectForm");
+const statusEl = document.getElementById("status");
+const statusText = document.getElementById("statusText");
+const results = document.getElementById("results");
+const apiHint = document.getElementById("apiHint");
+const goBtn = document.getElementById("goBtn");
+
+function setStatus(msg, err) {
+  statusEl.classList.add("show");
+  statusEl.classList.toggle("err", !!err);
+  statusText.textContent = msg;
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const domain = document.getElementById("domainInput").value.trim();
+  if (!domain) return;
+  goBtn.disabled = true;
+  results.classList.remove("show");
+  apiHint.classList.remove("show");
+  setStatus("SichtwerkBot crawlt " + domain + " — robots.txt, Startseite, bis zu 7 Unterseiten … (10–30 s)");
+  try {
+    const res = await fetch("/api/analyze?url=" + encodeURIComponent(domain));
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || "HTTP " + res.status);
+    }
+    const data = await res.json();
+    if (data.error) { setStatus(data.error, true); goBtn.disabled = false; return; }
+    render(data);
+    setStatus("Analyse abgeschlossen: " + data.pages.length + " Seiten in " + (data.durationMs / 1000).toFixed(1) + " s · " + data.findings.length + " Findings.");
+  } catch (err) {
+    if (String(err).includes("Failed to fetch") || String(err).includes("404")) {
+      setStatus("Analyse-API nicht erreichbar.", true);
+      apiHint.classList.add("show");
+    } else {
+      setStatus("Fehler: " + err.message, true);
+    }
+  }
+  goBtn.disabled = false;
+});
+
+function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+function shortUrl(u) { try { const x = new URL(u); return x.pathname === "/" ? x.host : x.pathname; } catch (e) { return u; } }
+
+function render(d) {
+  document.getElementById("sTechnik").textContent = d.scores.technik;
+  document.getElementById("sContent").textContent = d.scores.content;
+  document.getElementById("sAeo").textContent = d.scores.aeo;
+  document.getElementById("sGeo").textContent = d.scores.geo;
+  document.getElementById("hostLabel").textContent = d.host;
+  document.getElementById("metaLabel").textContent = "Stichprobe: " + d.pages.length + " Seiten · " + new Date(d.fetchedAt).toLocaleString("de-DE");
+
+  const chip = (ok, labelOk, labelBad, warn) =>
+    '<span class="chip ' + (ok ? "ok" : warn ? "warn" : "bad") + '"><i></i>' + (ok ? labelOk : labelBad) + "</span>";
+  let chips = "";
+  chips += chip(d.robotsFound, "robots.txt vorhanden", "robots.txt fehlt", true);
+  chips += chip(d.sitemap, "sitemap.xml vorhanden", "sitemap.xml fehlt", true);
+  chips += chip(d.llmsTxt, "llms.txt vorhanden", "llms.txt fehlt", true);
+  Object.entries(d.aiBots).forEach(([bot, state]) => {
+    chips += chip(state === "erlaubt", bot + ": erlaubt", bot + ": blockiert", false);
+  });
+  document.getElementById("siteChips").innerHTML = chips;
+
+  document.getElementById("pageCount").textContent = d.pages.length;
+  document.getElementById("pagesBody").innerHTML = d.pages.map((p) => {
+    if (p.error) return "<tr><td class='mono'>" + esc(shortUrl(p.requested)) + "</td><td class='num tr-dn'>" + esc(p.error) + "</td><td class='num' colspan='6'>—</td></tr>";
+    return "<tr><td class='mono'>" + esc(shortUrl(p.url)) + "</td>" +
+      "<td class='num" + (p.hops > 1 ? " tr-dn" : "") + "'>" + p.status + (p.hops > 1 ? " (" + p.hops + " Hops)" : "") + "</td>" +
+      "<td class='num" + (p.titleLen > 62 || p.titleLen < 25 ? " tr-dn" : "") + "'>" + p.titleLen + "</td>" +
+      "<td class='num" + (p.descLen === 0 ? " tr-dn" : "") + "'>" + p.descLen + "</td>" +
+      "<td class='num" + (p.h1Count !== 1 ? " tr-dn" : "") + "'>" + p.h1Count + "</td>" +
+      "<td class='num" + (p.imgsNoAlt > 0 ? " tr-dn" : " tr-up") + "'>" + p.imgsNoAlt + "/" + p.imgs + "</td>" +
+      "<td class='num'>" + p.words.toLocaleString("de-DE") + "</td>" +
+      "<td>" + (p.schemaTypes && p.schemaTypes.length ? p.schemaTypes.map((s) => '<span class="schema-chip">' + esc(s) + "</span>").join("") : '<span style="color:var(--ink-3)">—</span>') + "</td></tr>";
+  }).join("");
+
+  document.getElementById("findingCount").textContent = d.findings.length;
+  const sevClass = { kritisch: "sev-crit", hoch: "sev-hoch", mittel: "sev-mittel" };
+  document.getElementById("findingsList").innerHTML = d.findings.length
+    ? d.findings.map((f, i) =>
+        '<div class="li"><span class="li-sev ' + sevClass[f.severity] + '">' + f.severity + "</span>" +
+        '<div class="li-body"><div class="li-title">' + esc(f.title) + '</div>' +
+        (f.sub ? '<div class="li-sub">' + f.sub + "</div>" : "") +
+        (f.proposal ? '<div class="prop">' + f.proposal + "</div>" : "") +
+        '</div><div class="li-side">' +
+        (f.fixTitle ? '<button class="fixbtn" data-i="' + i + '">Ins Fließband legen</button>' : "") +
+        "</div></div>"
+      ).join("")
+    : '<div class="li"><div class="li-body"><div class="li-title">Keine Findings — saubere Stichprobe.</div><div class="li-sub">Im Produkt folgt der Voll-Crawl mit semantischer Analyse.</div></div></div>';
+
+  document.querySelectorAll("#findingsList [data-i]").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const f = d.findings[Number(btn.dataset.i)];
+      WERK.store.add({
+        stage: "pruefung", type: f.fixType || f.type, title: f.fixTitle,
+        url: d.host + " (Live-Analyse)", diff: f.proposal || "<ins>Vorschlag aus Live-Analyse</ins>",
+      });
+      const s = document.createElement("span"); s.className = "inband"; s.textContent = "Liegt im Fließband";
+      btn.replaceWith(s);
+      WERK.agentNote('Change-Set aus der Live-Analyse erstellt — <a href="massnahmen.html" style="color:var(--act)">im Fließband freigeben</a>.');
+    })
+  );
+  results.classList.add("show");
+}
+</script>
+</body>
+</html>

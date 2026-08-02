@@ -22,10 +22,12 @@
     check: '<path d="m6 8 1.5 1.5L10.5 6"/><rect x="2" y="2" width="12" height="12" rx="3"/>',
     report: '<path d="M3 13.5h10M4.5 13.5V8M8 13.5V4M11.5 13.5V6.5"/>',
     gear: '<circle cx="8" cy="8" r="2"/><path d="M8 1.8v2M8 12.2v2M1.8 8h2M12.2 8h2M3.6 3.6 5 5M11 11l1.4 1.4M12.4 3.6 11 5M5 11l-1.4 1.4"/>',
+    plug: '<path d="M5 2v4M11 2v4M4 6h8v3a4 4 0 0 1-8 0z"/><path d="M8 13v1.5"/>',
   };
   const NAV = [
     { group: "Steuerung" },
     { id: "dashboard", href: "dashboard.html", label: "Übersicht", icon: "grid" },
+    { id: "verbinden", href: "verbinden.html", label: "Site verbinden", icon: "plug", live: true },
     { id: "crawls", href: "crawls.html", label: "Crawls & Technik", icon: "globe" },
     { id: "content", href: "content.html", label: "Content", icon: "doc" },
     { id: "links", href: "links.html", label: "Interne Links", icon: "link" },
@@ -55,6 +57,7 @@
       if (n.group) { h += '<div class="nav-group-label">' + n.group + "</div>"; return; }
       h += '<a class="nav-item' + (n.id === active ? " active" : "") + '" href="' + n.href + '">' + svgIcon(n.icon) +
         "<span>" + n.label + "</span>" +
+        (n.live ? '<b class="nav-badge" style="background:var(--good-dim);color:var(--good);border-color:rgba(69,196,134,.3)">live</b>' : "") +
         (n.badge ? '<b class="nav-badge" data-badge>0</b>' : "") + "</a>";
     });
     h += '<div class="nav-foot"><span class="dot">●</span> Alle Worker aktiv · v2.4.1<br>© DentalConnect · EU (Amsterdam)</div>';
