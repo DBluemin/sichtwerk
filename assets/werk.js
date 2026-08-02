@@ -54,13 +54,13 @@
     let h =
       '<a class="brand" href="dashboard.html" aria-label="NENNWERT SEO-Cockpit">' +
       '<svg class="apex" viewBox="-14 -2 66 66" aria-hidden="true"><rect x="0" y="0" width="12" height="60" fill="#24B6E5"/><rect x="36" y="0" width="12" height="60" fill="#29297A"/><polygon points="0,0 48,60 36,60 -12,0" fill="#3BE8C8" opacity=".95"/></svg>' +
-      '<span class="wordmark"><span class="wm-line"><i>NENN</i><b>WERT</b></span><small>SEO-COCKPIT · BY DENTALCONNECT</small></span></a>';
-    h += '<div class="mod-switch"><a class="mod" href="https://nennwert.dental-connect.eu" target="_blank" rel="noopener">Messung ↗</a><span class="mod active">SEO-Cockpit</span></div>';
+      '<span class="wordmark"><span class="wm-line"><i>NENN</i><b>WERT</b></span><small>BY DENTALCONNECT</small></span></a>';
+    h += '<div class="mod-switch" role="tablist"><a class="mod" href="https://nennwert.dental-connect.eu" target="_blank" rel="noopener">Messung<span class="mod-ext">↗</span></a><span class="mod active">SEO-Cockpit</span></div>';
     NAV.forEach((n) => {
       if (n.group) { h += '<div class="nav-group-label">' + n.group + "</div>"; return; }
       h += '<a class="nav-item' + (n.id === active ? " active" : "") + '" href="' + n.href + '">' + svgIcon(n.icon) +
         "<span>" + n.label + "</span>" +
-        (n.live ? '<b class="nav-badge" style="background:var(--good-dim);color:var(--good);border-color:rgba(69,196,134,.3)">live</b>' : "") +
+        (n.live ? '<i class="nav-live-dot" title="Live-Funktion"></i>' : "") +
         (n.badge ? '<b class="nav-badge" data-badge>0</b>' : "") + "</a>";
     });
     h += '<div class="nav-foot"><span class="dot">●</span> Alle Worker aktiv · v2.4.1<br>© DentalConnect · EU (Amsterdam)</div>';
