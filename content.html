@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — Content</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+<style>
+.filters { display: flex; gap: 8px; padding: 12px 16px 4px; flex-wrap: wrap; }
+.filters select {
+  background: var(--inset); border: 1px solid var(--line); color: var(--ink-2);
+  border-radius: var(--r-sm); padding: 5px 9px; font-family: inherit; font-size: 12px;
+}
+.scorepill { display: inline-block; min-width: 30px; text-align: center; font-family: var(--font-mono); font-size: 11px; border-radius: 4px; padding: 1px 5px; }
+.sp-good { background: var(--good-dim); color: var(--good); }
+.sp-mid { background: var(--warn-dim); color: var(--warn); }
+.sp-low { background: var(--crit-dim); color: var(--crit); }
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <div>
+        <h1>Content</h1>
+        <div class="lede">Jede Unterseite mit Content-, AEO- und EEAT-Bewertung. Die Detailansicht zeigt Findings, Diff-Historie und Wirkungskurve pro URL.</div>
+      </div>
+      <div class="page-meta">Bewertete Seiten: <b>1.412</b> · Ø Content-Score: <b>71</b><br>Kannibalisierungs-Paare: <b>2 offen</b></div>
+    </header>
+
+    <section class="scores four" aria-label="Kennzahlen">
+      <div class="score"><div class="score-label">Content-Score</div><div class="score-row"><span class="score-val">71</span><span class="score-delta up">▲ 2</span></div><div class="score-vs">Ø Top-3-Wettbewerber: 66</div></div>
+      <div class="score"><div class="score-label">Seiten mit Antwortabsatz</div><div class="score-row"><span class="score-val">38<small>%</small></span><span class="score-delta up">▲ 6</span></div><div class="score-vs">Ziel: 80 % der Geld-Seiten</div></div>
+      <div class="score"><div class="score-label">Veraltete Inhalte</div><div class="score-row"><span class="score-val">64</span><span class="score-delta down">▼ 8</span></div><div class="score-vs">&gt; 18 Monate ohne Update</div></div>
+      <div class="score"><div class="score-label">Ohne Autorenprofil</div><div class="score-row"><span class="score-val">23</span><span class="score-delta down">▼ 3</span></div><div class="score-vs">EEAT-Fix liegt im Fließband</div></div>
+    </section>
+
+    <section class="panel" aria-label="Seitenliste">
+      <div class="panel-head"><div><div class="panel-title">Seiten <span class="cnt">1.412 · Top 8 nach Geschäftswert</span></div><div class="panel-sub">Klick auf eine URL öffnet die Detailansicht</div></div></div>
+      <div class="filters">
+        <select><option>Seitentyp: Alle</option><option>Behandlung</option><option>Standort</option><option>Ratgeber</option></select>
+        <select><option>Score: Alle</option><option>&lt; 50</option><option>50–75</option><option>&gt; 75</option></select>
+        <select><option>Status: Alle</option><option>Mit offenen Findings</option><option>In Beobachtung</option></select>
+        <select><option>Sortierung: Geschäftswert</option><option>Content-Score aufsteigend</option><option>Traffic</option></select>
+      </div>
+      <div class="tblwrap">
+        <table class="tbl">
+          <thead><tr><th>URL</th><th>Typ</th><th style="text-align:right">Content</th><th style="text-align:right">AEO</th><th style="text-align:right">EEAT</th><th style="text-align:right">Wörter</th><th style="text-align:right">Klicks/M.</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="mono"><a href="url-detail.html">/behandlungen/zahnimplantate</a></td><td>Behandlung</td><td class="num"><span class="scorepill sp-good">79</span></td><td class="num"><span class="scorepill sp-good">81</span></td><td class="num"><span class="scorepill sp-mid">70</span></td><td class="num">2.340</td><td class="num">3.180</td><td><span class="tag tag-good">3 Sets wirksam</span></td></tr>
+            <tr><td class="mono">/behandlungen/invisalign</td><td>Behandlung</td><td class="num"><span class="scorepill sp-mid">62</span></td><td class="num"><span class="scorepill sp-mid">55</span></td><td class="num"><span class="scorepill sp-mid">68</span></td><td class="num">1.120</td><td class="num">1.940</td><td><span class="tag tag-warn">4 Findings</span></td></tr>
+            <tr><td class="mono">/behandlungen/wurzelbehandlung</td><td>Behandlung</td><td class="num"><span class="scorepill sp-mid">58</span></td><td class="num"><span class="scorepill sp-mid">51</span></td><td class="num"><span class="scorepill sp-good">76</span></td><td class="num">980</td><td class="num">1.610</td><td><span class="tag tag-meas">Set generiert</span></td></tr>
+            <tr><td class="mono">/standorte/muenchen</td><td>Standort</td><td class="num"><span class="scorepill sp-good">77</span></td><td class="num"><span class="scorepill sp-mid">64</span></td><td class="num"><span class="scorepill sp-good">80</span></td><td class="num">1.480</td><td class="num">2.870</td><td><span class="tag tag-warn">LCP-Finding</span></td></tr>
+            <tr><td class="mono">/ratgeber/zahnkrone-kosten</td><td>Ratgeber</td><td class="num"><span class="scorepill sp-mid">66</span></td><td class="num"><span class="scorepill sp-mid">59</span></td><td class="num"><span class="scorepill sp-low">44</span></td><td class="num">1.890</td><td class="num">1.230</td><td><span class="tag tag-warn">Quick Win offen</span></td></tr>
+            <tr><td class="mono">/ratgeber/implantat-kosten</td><td>Ratgeber</td><td class="num"><span class="scorepill sp-good">74</span></td><td class="num"><span class="scorepill sp-good">78</span></td><td class="num"><span class="scorepill sp-low">48</span></td><td class="num">2.110</td><td class="num">1.050</td><td><span class="tag tag-crit">Kannibalisierung</span></td></tr>
+            <tr><td class="mono">/behandlungen/bleaching</td><td>Behandlung</td><td class="num"><span class="scorepill sp-low">41</span></td><td class="num"><span class="scorepill sp-low">32</span></td><td class="num"><span class="scorepill sp-mid">61</span></td><td class="num">640</td><td class="num">720</td><td><span class="tag tag-crit">Duplicate (4 URLs)</span></td></tr>
+            <tr><td class="mono">/ratgeber/angstpatienten</td><td>Ratgeber</td><td class="num"><span class="scorepill sp-mid">69</span></td><td class="num"><span class="scorepill sp-mid">57</span></td><td class="num"><span class="scorepill sp-mid">66</span></td><td class="num">1.540</td><td class="num">90</td><td><span class="tag tag-mut">Verwaist</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="duo-even">
+      <section class="panel" aria-label="Kannibalisierung">
+        <div class="panel-head"><div><div class="panel-title">Kannibalisierungs-Paare <span class="cnt">2</span></div><div class="panel-sub">Embedding-Ähnlichkeit &gt; 0,8 + gleiche Ziel-Keywords</div></div></div>
+        <div class="list">
+          <div class="li"><div class="li-ico ico-crit">⇆</div><div class="li-body"><div class="li-title">/behandlungen/zahnimplantate ↔ /ratgeber/implantat-kosten</div><div class="li-sub">Ähnlichkeit 0,81 · beide ranken zeitweise für „zahnimplantat kosten" — Intent-Trennung empfohlen.</div></div><div class="li-side"><button class="fixbtn" data-fix="Content" data-title="Intent-Trennung Implantat-Kosten (Canonical + Link)">Fix generieren</button></div></div>
+          <div class="li"><div class="li-ico ico-crit">⇆</div><div class="li-body"><div class="li-title">/behandlungen/bleaching ↔ 3 Varianten-URLs</div><div class="li-sub">94 % identischer Inhalt · Canonical-Konsolidierung wird bereits generiert.</div></div><div class="li-side"><span class="inband">Liegt im Fließband</span></div></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Veraltete Inhalte">
+        <div class="panel-head"><div><div class="panel-title">Aktualisierungs-Kandidaten</div><div class="panel-sub">Alter × Traffic-Verlust, priorisiert</div></div></div>
+        <div class="list">
+          <div class="li"><div class="li-ico ico-act">↻</div><div class="li-body"><div class="li-title">/ratgeber/zahnzusatzversicherung</div><div class="li-sub">Stand 2024 · Tarifdaten veraltet · −38 % Klicks in 6 Monaten</div></div><div class="li-side"><button class="fixbtn" data-fix="Content" data-title="Zahnzusatzversicherung: Aktualisierung 2026">Fix generieren</button></div></div>
+          <div class="li"><div class="li-ico ico-act">↻</div><div class="li-body"><div class="li-title">/ratgeber/kassenleistungen</div><div class="li-sub">Festzuschüsse 2026 fehlen · KI-Systeme zitieren veraltete Beträge</div></div><div class="li-side"><button class="fixbtn" data-fix="Content" data-title="Kassenleistungen: Festzuschüsse 2026 einpflegen">Fix generieren</button></div></div>
+          <div class="li"><div class="li-ico ico-act">↻</div><div class="li-body"><div class="li-title">/behandlungen/prophylaxe</div><div class="li-sub">Description bereits erneuert (live) · Haupttext 22 Monate alt</div></div><div class="li-side"><button class="fixbtn" data-fix="Content" data-title="Prophylaxe: Haupttext auffrischen">Fix generieren</button></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "content",
+  dock: {
+    context: "Content — 1.412 bewertete Seiten",
+    chips: ["Welche Seite zuerst?", "Wo fehlen Antwortabsätze?"],
+    canned: {
+      "welche seite zuerst?": "/behandlungen/invisalign: Geschäftswert hoch, Content-Score nur 62, und die geplante Landingpage „Invisalign München“ (ROI 92) braucht sie als Pillar. Ich würde dort Antwortabsatz, FAQ und 4 interne Links in einem Change-Set bündeln — soll ich?",
+      "wo fehlen antwortabsätze?": "Auf 62 % der Geld-Seiten. Kritischste fünf nach Suchvolumen: Invisalign (2.900), Wurzelbehandlung (2.400), Zahnkrone (1.900), Veneers (1.300), Prophylaxe (880). Ich kann alle fünf als Serie generieren — sie erscheinen einzeln prüfbar im Fließband.",
+    },
+  },
+});
+document.querySelectorAll("[data-fix]").forEach((btn) =>
+  btn.addEventListener("click", () => {
+    btn.disabled = true; btn.textContent = "Wird generiert …";
+    setTimeout(() => {
+      WERK.store.add({ stage: "pruefung", type: btn.dataset.fix, title: btn.dataset.title, url: "siehe Titel", diff: "<ins>Vorschlag generiert — Details im Fließband prüfen</ins>" });
+      const s = document.createElement("span"); s.className = "inband"; s.textContent = "Liegt im Fließband";
+      btn.replaceWith(s);
+      WERK.agentNote('Fix generiert — <a href="massnahmen.html" style="color:var(--act)">im Fließband freigeben</a>.');
+    }, 900);
+  })
+);
+</script>
+</body>
+</html>

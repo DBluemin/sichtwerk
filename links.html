@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — Interne Links</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <div>
+        <h1>Interne Links</h1>
+        <div class="lede">Linkgraph, Cluster-Gesundheit und automatisch berechnete Link-Kandidaten aus Embedding-Nähe + Linkkraft-Lücken.</div>
+      </div>
+      <div class="page-meta">Linkgraph: <b>6.240 Knoten · 48.112 Kanten</b><br>Neuberechnung: <b>nach jedem Crawl</b></div>
+    </header>
+
+    <section class="scores four" aria-label="Kennzahlen">
+      <div class="score"><div class="score-label">Ø Klicktiefe</div><div class="score-row"><span class="score-val">2,4</span><span class="score-delta up">▲ 0,2</span></div><div class="score-vs">Geld-Seiten: max. 3 empfohlen</div></div>
+      <div class="score"><div class="score-label">Verwaiste Seiten</div><div class="score-row"><span class="score-val">9</span><span class="score-delta down">▼ 3</span></div><div class="score-vs">0 interne Links eingehend</div></div>
+      <div class="score"><div class="score-label">Defekte interne Links</div><div class="score-row"><span class="score-val">12</span><span class="score-delta down">▼ 5</span></div><div class="score-vs">Fix liegt unter Crawls &amp; Technik</div></div>
+      <div class="score"><div class="score-label">Anchor-Diversität</div><div class="score-row"><span class="score-val">67<small>%</small></span><span class="score-delta up">▲ 4</span></div><div class="score-vs">Anteil beschreibender Anker</div></div>
+    </section>
+
+    <div class="duo-even">
+      <section class="panel" aria-label="Cluster-Gesundheit">
+        <div class="panel-head"><div><div class="panel-title">Cluster-Gesundheit</div><div class="panel-sub">Pillar-Abdeckung × interne Verlinkung je Themencluster</div></div></div>
+        <div class="panel-body"><div class="hbars" id="cluster"></div>
+          <div style="font-size:11.5px;color:var(--ink-3);margin-top:10px">„Zahnersatz" hat 14 Artikel, aber keine Pillar-Seite — der stärkste strukturelle Hebel (ROI 87, siehe Übersicht).</div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Verwaiste Seiten">
+        <div class="panel-head"><div><div class="panel-title">Verwaiste Seiten <span class="cnt">9</span></div><div class="panel-sub">Erreichbar nur über Sitemap — ohne Linkkraft</div></div></div>
+        <div class="list">
+          <div class="li"><div class="li-ico ico-crit">◌</div><div class="li-body"><div class="li-title">/ratgeber/angstpatienten</div><div class="li-sub">320 Suchen/M. im Cluster · 6 passende Quellseiten gefunden</div></div><div class="li-side"><button class="fixbtn" data-fix="Links" data-title="Angstpatienten anbinden (6 Links)" data-url="/ratgeber/angstpatienten">Fix generieren</button></div></div>
+          <div class="li"><div class="li-ico ico-crit">◌</div><div class="li-body"><div class="li-title">/ratgeber/zahnpflege-kinder</div><div class="li-sub">210 Suchen/M. · 4 Quellseiten im KFO-Cluster</div></div><div class="li-side"><button class="fixbtn" data-fix="Links" data-title="Zahnpflege-Kinder anbinden (4 Links)" data-url="/ratgeber/zahnpflege-kinder">Fix generieren</button></div></div>
+          <div class="li"><div class="li-ico ico-crit">◌</div><div class="li-body"><div class="li-title">7 weitere (Archiv-Ratgeber)</div><div class="li-sub">Geringes Volumen — Vorschlag: in Pillar-Seiten bündeln statt einzeln verlinken</div></div><div class="li-side"><span class="roi">—</span></div></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" aria-label="Link-Kandidaten">
+      <div class="panel-head"><div><div class="panel-title">Link-Kandidaten <span class="cnt">Top 6 von 41</span></div><div class="panel-sub">Quelle → Ziel mit Anchor-Vorschlag · aus semantischer Nähe + Linkkraft-Bedarf</div></div></div>
+      <div class="tblwrap">
+        <table class="tbl">
+          <thead><tr><th>Quellseite</th><th>Anchor (Vorschlag)</th><th>Zielseite</th><th style="text-align:right">Erwartete Wirkung</th><th></th></tr></thead>
+          <tbody>
+            <tr><td class="mono">/ratgeber/zahnkrone-kosten</td><td>„Zahnkrone oder Implantat?"</td><td class="mono"><a href="url-detail.html">/behandlungen/zahnimplantate</a></td><td class="num tr-up">hoch</td><td><button class="fixbtn" data-fix="Links" data-title="Link Zahnkrone→Implantate" data-url="/ratgeber/zahnkrone-kosten">Fix generieren</button></td></tr>
+            <tr><td class="mono">/standorte/muenchen</td><td>„Invisalign-Beratung in Schwabing"</td><td class="mono">/behandlungen/invisalign</td><td class="num tr-up">hoch</td><td><button class="fixbtn" data-fix="Links" data-title="Link München→Invisalign" data-url="/standorte/muenchen">Fix generieren</button></td></tr>
+            <tr><td class="mono">/ratgeber/implantat-kosten</td><td>„Beratungstermin Implantologie"</td><td class="mono"><a href="url-detail.html">/behandlungen/zahnimplantate</a></td><td class="num tr-up">hoch</td><td><button class="fixbtn" data-fix="Links" data-title="Link Implantat-Kosten→Behandlung" data-url="/ratgeber/implantat-kosten">Fix generieren</button></td></tr>
+            <tr><td class="mono">/behandlungen/prophylaxe</td><td>„professionelle Zahnreinigung Kosten"</td><td class="mono">/ratgeber/pzr-kosten</td><td class="num">mittel</td><td><button class="fixbtn" data-fix="Links" data-title="Link Prophylaxe→PZR-Kosten" data-url="/behandlungen/prophylaxe">Fix generieren</button></td></tr>
+            <tr><td class="mono">/ratgeber/wurzelbehandlung-schmerzen</td><td>„Wurzelbehandlung unter dem Mikroskop"</td><td class="mono">/behandlungen/wurzelbehandlung</td><td class="num">mittel</td><td><button class="fixbtn" data-fix="Links" data-title="Link Schmerzen→Wurzelbehandlung" data-url="/ratgeber/wurzelbehandlung-schmerzen">Fix generieren</button></td></tr>
+            <tr><td class="mono">/standorte/augsburg</td><td>„Zahnimplantate in Augsburg"</td><td class="mono"><a href="url-detail.html">/behandlungen/zahnimplantate</a></td><td class="num">mittel</td><td><button class="fixbtn" data-fix="Links" data-title="Link Augsburg→Implantate" data-url="/standorte/augsburg">Fix generieren</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "links",
+  dock: {
+    context: "Interne Links — 48.112 Kanten",
+    chips: ["Baue das Zahnersatz-Cluster", "Welche Seite hortet Linkkraft?"],
+    canned: {
+      "baue das zahnersatz-cluster": "Plan: (1) Pillar-Seite „Zahnersatz-Ratgeber“ als Entwurf generieren, (2) die 14 bestehenden Artikel mit je 1–2 Links an die Pillar anbinden, (3) Pillar in die Hauptnavigation. Schritt 1 lege ich als Seiten-Entwurf ins Fließband, Schritt 2 als Link-Serie — beides einzeln freigebbar.",
+      "welche seite hortet linkkraft?": "/ratgeber/zahnschmerzen sammelt 8 % der internen Linkkraft (Footer-Link von jeder Seite), konvertiert aber kaum. Empfehlung: Footer-Link entfernen und die Kraft über 3 kontextuelle Links auf Geld-Seiten umleiten — Vorschlag liegt bereit.",
+    },
+  },
+});
+WERK.hbars(document.getElementById("cluster"), [
+  { label: "Implantologie", val: 92, max: 100, display: "92 %" },
+  { label: "Prophylaxe", val: 78, max: 100, display: "78 %" },
+  { label: "Ästhetik", val: 66, max: 100, display: "66 %" },
+  { label: "Zahnersatz", val: 61, max: 100, display: "61 %" },
+  { label: "Kieferorthopädie", val: 44, max: 100, display: "44 %" },
+]);
+WERK.bindFixButtons();
+</script>
+</body>
+</html>

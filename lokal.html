@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — Lokal &amp; International</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <div>
+        <h1>Lokal &amp; International</h1>
+        <div class="lede">Drei Standorte, Local-Pack-Rankings, Google Business Profile und NAP-Konsistenz — plus hreflang für den Österreich-Rollout.</div>
+      </div>
+      <div class="page-meta">Local-Rank-Tracking: <b>täglich, je Standort-Radius</b><br>Portal-Abgleich: <b>GBP, jameda, Doctolib, 11880</b></div>
+    </header>
+
+    <section class="panel" aria-label="Standorte">
+      <div class="panel-head"><div><div class="panel-title">Standorte</div><div class="panel-sub">Local Pack = Kartenkasten bei „zahnarzt + stadtteil"-Suchen</div></div></div>
+      <div class="tblwrap">
+        <table class="tbl">
+          <thead><tr><th>Standort</th><th style="text-align:right">Local-Pack-Quote</th><th style="text-align:right">GBP-Bewertungen</th><th>NAP-Konsistenz</th><th>Standortseite</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><b>München-Schwabing</b></td><td class="num tr-up">72 %</td><td class="num">4,9 ★ (388)</td><td><span class="tag tag-good">Konsistent</span></td><td class="mono">/standorte/muenchen</td><td><span class="tag tag-warn">LCP-Finding</span></td></tr>
+            <tr><td><b>Augsburg</b></td><td class="num tr-up">81 %</td><td class="num">4,8 ★ (214)</td><td><span class="tag tag-crit">GBP: alte Öffnungszeiten</span></td><td class="mono">/standorte/augsburg</td><td><span class="tag tag-good">Gesund</span></td></tr>
+            <tr><td><b>Nürnberg</b> <span style="color:var(--ink-3);font-size:11px">(neu)</span></td><td class="num tr-dn">8 %</td><td class="num">5,0 ★ (23)</td><td><span class="tag tag-warn">jameda: alte Nummer</span></td><td class="mono">/standorte/nuernberg</td><td><span class="tag tag-crit">noindex-Rest!</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="duo-even">
+      <section class="panel" aria-label="Lokale Findings">
+        <div class="panel-head"><div><div class="panel-title">Lokale Findings <span class="cnt">4</span></div><div class="panel-sub">NAP = Name, Adresse, Telefonnummer — Konsistenz ist ein KI-Zitationsfaktor</div></div></div>
+        <div class="list">
+          <div class="li"><span class="li-sev sev-crit">Kritisch</span><div class="li-body"><div class="li-title">Nürnberg: Standortseite auf noindex</div><div class="li-sub">Relaunch-Rest seit 41 Tagen · +1.400 Besuche/M. Potenzial</div></div><div class="li-side"><button class="fixbtn" data-fix="Technik" data-title="Nürnberg: noindex entfernen" data-url="/standorte/nuernberg">Fix generieren</button></div></div>
+          <div class="li"><span class="li-sev sev-hoch">Hoch</span><div class="li-body"><div class="li-title">GBP Augsburg: veraltete Öffnungszeiten</div><div class="li-sub">Abweichung zur Website · senkt Local-Pack-Vertrauen und verwirrt KI-Antworten</div></div><div class="li-side"><button class="fixbtn" data-fix="Lokal" data-title="GBP Augsburg: Öffnungszeiten korrigieren">Korrektur vorbereiten</button></div></div>
+          <div class="li"><span class="li-sev sev-hoch">Hoch</span><div class="li-body"><div class="li-title">jameda: alte Telefonnummer (Nürnberg)</div><div class="li-sub">NAP-Abweichung auf reichweitenstärkstem Gesundheitsportal</div></div><div class="li-side"><button class="fixbtn" data-fix="Lokal" data-title="jameda Nürnberg: Nummer korrigieren">Korrektur vorbereiten</button></div></div>
+          <div class="li"><span class="li-sev sev-mittel">Mittel</span><div class="li-body"><div class="li-title">Nur 23 Bewertungen in Nürnberg</div><div class="li-sub">Vorschlag: QR-Bewertungskarten am Empfang (Vorlage generierbar) — keine gekauften Bewertungen</div></div><div class="li-side"><button class="fixbtn" data-fix="Lokal" data-title="Bewertungskarten-Vorlage Nürnberg">Vorlage erstellen</button></div></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="International">
+        <div class="panel-head"><div><div class="panel-title">International — Österreich-Rollout</div><div class="panel-sub">hreflang-Matrix de-DE ↔ de-AT · 84 Seitenpaare</div></div></div>
+        <div class="list">
+          <div class="li"><div class="li-ico ico-crit">✕</div><div class="li-body"><div class="li-title">hreflang de-AT zeigt auf 404 (6 URLs)</div><div class="li-sub">AT-Pfade heißen /leistungen/ statt /behandlungen/ · Fix liegt im Fließband</div></div><div class="li-side"><span class="inband">Liegt im Fließband</span></div></div>
+          <div class="li"><div class="li-ico ico-good">✓</div><div class="li-body"><div class="li-title">78 Paare korrekt verknüpft</div><div class="li-sub">Rückverweise vollständig, x-default gesetzt</div></div></div>
+          <div class="li"><div class="li-ico ico-act">▢</div><div class="li-body"><div class="li-title">AT-Preisangaben prüfen</div><div class="li-sub">12 Seiten nennen deutsche Festzuschüsse — für AT irreführend (ÖGK-System)</div></div><div class="li-side"><button class="fixbtn" data-fix="Content" data-title="AT-Preisangaben lokalisieren (12 Seiten)">Fix generieren</button></div></div>
+          <div class="li"><div class="li-ico ico-meas">◈</div><div class="li-body"><div class="li-title">Schweiz (de-CH): geplant Q4</div><div class="li-sub">Empfehlung aus Erfahrung AT: Pfad-Schema vor Start festlegen</div></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "lokal",
+  dock: {
+    context: "Lokal &amp; International — 3 Standorte + AT",
+    chips: ["Warum ist Nürnberg unsichtbar?", "Was bringt NAP-Konsistenz für KI?"],
+    canned: {
+      "warum ist nürnberg unsichtbar?": "Drei sich verstärkende Ursachen: Die Standortseite steht auf noindex (Relaunch-Rest), das GBP hat erst 23 Bewertungen, und jameda führt die alte Nummer — die NAP-Abweichung kostet Vertrauenssignale. Reihenfolge: noindex-Fix zuerst (sofort wirksam), dann NAP, dann Bewertungsaufbau. Alle drei Vorbereitungen liegen bereit.",
+      "was bringt nap-konsistenz für ki?": "KI-Systeme gleichen Praxis-Fakten über mehrere Quellen ab. Widersprechen sich Website, GBP und jameda bei Nummer oder Zeiten, sinkt die Nennungswahrscheinlichkeit — oder schlimmer: die KI gibt die falsche Nummer aus. Das NENNWERT-Panel hat genau das 2× bei Nürnberg-Prompts beobachtet.",
+    },
+  },
+});
+WERK.bindFixButtons();
+</script>
+</body>
+</html>

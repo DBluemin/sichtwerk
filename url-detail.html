@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — /behandlungen/zahnimplantate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="crumbs">
+        <a href="dashboard.html">Übersicht</a> <span>/</span>
+        <a href="content.html">Content</a> <span>/</span>
+        <span class="here">/behandlungen/zahnimplantate</span>
+      </div>
+      <span class="spacer"></span>
+      <a class="btn btn-ghost" href="#" onclick="return false;">Seite öffnen ↗</a>
+      <button class="btn btn-ghost">Neu crawlen</button>
+      <button class="btn btn-primary" onclick="WERK.focusAgent()">Agent zu dieser Seite</button>
+    </div>
+
+    <header class="page-head" style="display:block">
+      <h1><span class="host">smiledental-gruppe.de</span>/behandlungen/zahnimplantate</h1>
+      <div class="chips">
+        <span class="chip ok"><i></i>200 OK</span>
+        <span class="chip ok"><i></i>indexierbar</span>
+        <span class="chip ok"><i></i>Canonical: self</span>
+        <span class="chip meas"><i></i>Klicktiefe 2</span>
+        <span class="chip meas"><i></i>LCP p75 2,3 s</span>
+        <span class="chip warn"><i></i>INP p75 240 ms</span>
+        <span class="chip meas"><i></i>Seitentyp: Behandlung · Geschäftswert hoch</span>
+      </div>
+      <div class="head-meta" style="margin-top:10px;font-size:12px;color:var(--ink-3)">
+        Zuletzt gecrawlt: <b style="color:var(--ink-2);font-weight:500">heute, 04:26</b> · Inhalt zuletzt geändert: <b style="color:var(--ink-2);font-weight:500">12.07.2026</b> (Change-Set C) ·
+        In KI-Antworten zitiert (NENNWERT): <b style="color:var(--ink-2);font-weight:500">34× in 30 Tagen</b> (ChatGPT 19, Perplexity 9, Gemini 6)
+      </div>
+    </header>
+
+    <section class="scores" aria-label="Scores dieser Seite">
+      <div class="score"><div class="score-label">SEO</div><div class="score-row"><span class="score-val">82</span><span class="score-delta up">▲ 7</span></div><div class="score-vs">Ø Projekt: 78</div></div>
+      <div class="score"><div class="score-label">Technik</div><div class="score-row"><span class="score-val">88</span><span class="score-delta up">▲ 2</span></div><div class="score-vs">Ø Projekt: 84</div></div>
+      <div class="score"><div class="score-label">Content</div><div class="score-row"><span class="score-val">79</span><span class="score-delta up">▲ 9</span></div><div class="score-vs">Ø Projekt: 71</div></div>
+      <div class="score"><div class="score-label">AEO</div><div class="score-row"><span class="score-val">81</span><span class="score-delta up">▲ 14</span></div><div class="score-vs">Antwortbox gewonnen</div></div>
+      <div class="score"><div class="score-label">GEO / KI</div><div class="score-row"><span class="score-val">66</span><span class="score-delta up">▲ 6</span></div><div class="score-vs">Ø Projekt: 58</div></div>
+      <div class="score"><div class="score-label">EEAT</div><div class="score-row"><span class="score-val">70</span><span class="score-delta down">▼ 2</span></div><div class="score-vs">Autorenprofil fehlt</div></div>
+    </section>
+
+    <section class="panel" aria-label="Wirkungskurve">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Wirkungskurve</div>
+          <div class="panel-sub" id="chartSub">Google-Position, wöchentlich — Marker A–C = live gegangene Change-Sets dieser Seite</div>
+        </div>
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-metric="pos" role="tab">Position</button>
+          <button class="tab" data-metric="ctr" role="tab">CTR</button>
+          <button class="tab" data-metric="cite" role="tab">KI-Zitationen</button>
+        </div>
+      </div>
+      <div class="chart-wrap" id="chartHost"></div>
+      <div class="chart-legend" id="legend"></div>
+    </section>
+
+    <div class="duo">
+      <section class="panel" aria-label="Offene Findings">
+        <div class="panel-head">
+          <div>
+            <div class="panel-title">Offene Findings <span class="cnt">4</span></div>
+            <div class="panel-sub">Nach ROI sortiert · 11 in den letzten 90 Tagen behoben</div>
+          </div>
+        </div>
+        <div class="list">
+          <div class="li">
+            <span class="li-sev sev-hoch">Hoch</span>
+            <div class="li-body">
+              <div class="li-title">Antwortabsatz für „Kosten"-Intent fehlt</div>
+              <div class="li-sub">4.400 Suchen/M. fragen nach Kosten — die Antwort steht erst in Absatz 7. AEO-Prüfer, Evidenz: SERP-Vergleich Top 3.</div>
+            </div>
+            <div class="li-side"><span class="roi">88<small>ROI-Score</small></span><button class="fixbtn" data-fix="AEO" data-title="Antwortabsatz „Kosten“ platzieren">Fix generieren</button></div>
+          </div>
+          <div class="li">
+            <span class="li-sev sev-hoch">Hoch</span>
+            <div class="li-body">
+              <div class="li-title">Kein Autorenprofil mit Facharzt-Nachweis</div>
+              <div class="li-sub">EEAT-Prüfer: medizinischer Inhalt ohne erkennbare Autorenschaft. Senkt den EEAT-Score dieser Seite um 8 Punkte.</div>
+            </div>
+            <div class="li-side"><span class="roi">76<small>ROI-Score</small></span><span class="inband">Liegt im Fließband</span></div>
+          </div>
+          <div class="li">
+            <span class="li-sev sev-mittel">Mittel</span>
+            <div class="li-body">
+              <div class="li-title">2 Bilder ohne Alt-Text</div>
+              <div class="li-sub">implantat-schema.webp, team-op.webp · Struktur-Prüfer, behebbar: automatisch.</div>
+            </div>
+            <div class="li-side"><span class="roi">41<small>ROI-Score</small></span><button class="fixbtn" data-fix="Alt-Texte" data-title="2 Alt-Texte ergänzen">Fix generieren</button></div>
+          </div>
+          <div class="li">
+            <span class="li-sev sev-mittel">Mittel</span>
+            <div class="li-body">
+              <div class="li-title">H-Hierarchie springt: H2 → H4 im Abschnitt „Nachsorge"</div>
+              <div class="li-sub">Struktur-Prüfer · beeinträchtigt Gliederungs-Extraktion durch KI-Systeme.</div>
+            </div>
+            <div class="li-side"><span class="roi">33<small>ROI-Score</small></span><button class="fixbtn" data-fix="Content" data-title="H-Hierarchie „Nachsorge“ korrigieren">Fix generieren</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Seitenprofil">
+        <div class="panel-head">
+          <div><div class="panel-title">Seitenprofil</div><div class="panel-sub">Stand: Crawl heute, 04:26</div></div>
+        </div>
+        <div class="prof">
+          <div class="prof-sec">
+            <div class="prof-label">Meta</div>
+            <div class="kv"><span class="k">Titel</span><span class="v">Zahnimplantate München: Kosten, Ablauf &amp; Beratung | SmileDental<span class="lenbar"><i style="width:88%"></i></span> <span style="color:var(--ink-3);font-size:10.5px">58/60</span></span></div>
+            <div class="kv"><span class="k">Description</span><span class="v">Feste Zähne an einem Tag: Ablauf, Kosten &amp; Finanzierung … <span class="lenbar"><i style="width:92%"></i></span> <span style="color:var(--ink-3);font-size:10.5px">142/155</span></span></div>
+            <div class="kv"><span class="k">Robots</span><span class="v mono">index, follow <span class="ok-mark">✓</span></span></div>
+          </div>
+          <div class="prof-sec">
+            <div class="prof-label">Struktur</div>
+            <div class="kv"><span class="k">Gliederung</span><span class="v mono">1× H1 · 6× H2 · 9× H3 · 2.340 Wörter</span></div>
+            <div class="kv"><span class="k">Schema</span><span class="v"><span class="schema-chip">MedicalClinic</span><span class="schema-chip">FAQPage</span><span class="schema-chip">BreadcrumbList</span></span></div>
+            <div class="kv"><span class="k">Links</span><span class="v mono">14 eingehend · 23 ausgehend · 0 defekt <span class="ok-mark">✓</span></span></div>
+          </div>
+          <div class="prof-sec">
+            <div class="prof-label">Rankt für (Top 5 von 38)</div>
+            <table class="tbl">
+              <thead><tr><th>Keyword</th><th style="text-align:right">Pos.</th><th style="text-align:right">Volumen</th><th></th></tr></thead>
+              <tbody>
+                <tr><td>zahnimplantate münchen</td><td class="num">3</td><td class="num">3.600</td><td class="num tr-up">▲2</td></tr>
+                <tr><td>zahnimplantat kosten <span class="feat">★ Antwortbox</span></td><td class="num">4</td><td class="num">4.400</td><td class="num tr-up">▲1</td></tr>
+                <tr><td>implantat oder brücke</td><td class="num">6</td><td class="num">1.900</td><td class="num tr-up">▲3</td></tr>
+                <tr><td>feste zähne an einem tag</td><td class="num">8</td><td class="num">880</td><td class="num" style="color:var(--ink-3)">—</td></tr>
+                <tr><td>sofortimplantat münchen</td><td class="num">9</td><td class="num">590</td><td class="num tr-dn">▼1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" aria-label="Diff-Historie">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Diff-Historie</div>
+          <div class="panel-sub">Jede Änderung versioniert, mit Wirkungsmessung nach 14/28 Tagen — rückholbar per Klick</div>
+        </div>
+      </div>
+      <div class="hist">
+        <div class="hentry">
+          <div class="hmark watch">D</div>
+          <div class="hbody">
+            <div class="hrow1"><span class="htitle">Alt-Texte ergänzt (12 Bilder)</span><span class="hdate">30.07.2026, 09:41</span><span class="hbadge watch">In Beobachtung · noch 11 Tage</span></div>
+            <div class="hdiff"><ins>„Zahnimplantat-Querschnitt: Implantatkörper, Abutment und Krone im Kieferknochen"</ins> + 11 weitere</div>
+            <div class="himpact"><span>Freigegeben von <b>D. Bluemin</b> · Kanal: CMS (WordPress-Revision #482)</span></div>
+          </div>
+          <div class="hside"><button class="rollback" data-rollback>Zurücknehmen</button></div>
+        </div>
+
+        <div class="hentry">
+          <div class="hmark live">C</div>
+          <div class="hbody">
+            <div class="hrow1"><span class="htitle">6 interne Links aus dem Implantologie-Cluster</span><span class="hdate">12.07.2026, 11:02</span><span class="hbadge works">Wirksam</span></div>
+            <div class="hdiff"><ins>„Knochenaufbau" → diese Seite</ins> · <ins>„Sofortimplantat" → diese Seite</ins> + 4 weitere Quellseiten</div>
+            <div class="himpact">
+              <span>Position (Ø Top-Keyword): <b class="pos">6 → 3</b></span>
+              <span>Eingehende Linkkraft: <b class="pos">+41 %</b></span>
+              <span>Messfenster: <b>28 Tage, abgeschlossen</b></span>
+            </div>
+            <div class="himpact"><span class="hwho">Erzeugt vom Agenten (Run #1042) · Freigegeben von D. Bluemin</span></div>
+          </div>
+          <div class="hside"><button class="rollback" data-rollback>Zurücknehmen</button></div>
+        </div>
+
+        <div class="hentry">
+          <div class="hmark live">B</div>
+          <div class="hbody">
+            <div class="hrow1"><span class="htitle">FAQ-Block (6 Fragen) + FAQPage-Schema</span><span class="hdate">28.06.2026, 08:15</span><span class="hbadge works">Wirksam</span></div>
+            <div class="hdiff"><ins>„Was kostet ein Zahnimplantat in München?" — Antwort in 42 Wörtern</ins> + 5 weitere Fragen, Schema validiert</div>
+            <div class="himpact">
+              <span>SERP-Feature: <b class="pos">Antwortbox für „zahnimplantat kosten" gewonnen</b></span>
+              <span>KI-Zitationen: <b class="pos">+9/Monat</b></span>
+            </div>
+            <div class="himpact"><span class="hwho">Erzeugt vom AEO-Prüfer · Freigegeben von M. Berger</span></div>
+          </div>
+          <div class="hside"><button class="rollback" data-rollback>Zurücknehmen</button></div>
+        </div>
+
+        <div class="hentry">
+          <div class="hmark live">A</div>
+          <div class="hbody">
+            <div class="hrow1"><span class="htitle">Meta-Titel neu formuliert</span><span class="hdate">14.06.2026, 16:40</span><span class="hbadge works">Wirksam</span></div>
+            <div class="hdiff"><del>Zahnimplantate | SmileDental Gruppe München Zahnarzt Implantologie</del><br><ins>Zahnimplantate München: Kosten, Ablauf &amp; Beratung | SmileDental</ins></div>
+            <div class="himpact">
+              <span>CTR: <b class="pos">2,1 % → 3,0 %</b> (+0,9 pp)</span>
+              <span>Position: <b>unverändert</b> — Effekt rein über Klickrate</span>
+            </div>
+            <div class="himpact"><span class="hwho">Erzeugt vom Struktur-Prüfer · Freigegeben von D. Bluemin</span></div>
+          </div>
+          <div class="hside"><button class="rollback" data-rollback>Zurücknehmen</button></div>
+        </div>
+
+        <div class="hentry">
+          <div class="hmark back">×</div>
+          <div class="hbody">
+            <div class="hrow1"><span class="htitle">Content-Erweiterung „Materialvergleich Titan/Keramik"</span><span class="hdate">02.06.2026</span><span class="hbadge none">Zurückgenommen</span></div>
+            <div class="himpact">
+              <span>Nach 28 Tagen: <b>keine messbare Wirkung</b>, Scroll-Tiefe −6 % — System schlug Rücknahme vor, am 01.07. zurückgenommen.</span>
+            </div>
+            <div class="himpact"><span class="hwho">Rücknahme freigegeben von D. Bluemin · Snapshot #451 wiederhergestellt</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "content",
+  dock: {
+    context: "/behandlungen/zahnimplantate — Antworten beziehen sich auf diese Seite.",
+    placeholder: "Frage zu dieser Seite …",
+    seed:
+      '<div class="msg msg-user">Was ist der nächste sinnvolle Schritt für diese Seite?</div>' +
+      '<div class="msg msg-agent"><div class="who">Werksleiter</div><div class="bubble">Der Kosten-Antwortabsatz (ROI 88). Die Seite rankt für „zahnimplantat kosten“ auf 4 <i>mit</i> Antwortbox — aber 4.400 monatliche Suchen treffen erst in Absatz 7 auf die Antwort. Ein präziser 40-Wort-Absatz direkt unter der H1 stützt die Antwortbox und die KI-Zitierbarkeit zugleich. Soll ich den Fix generieren?</div></div>',
+    chips: ["Warum wirkt Change-Set C?", "Wo wird die Seite KI-zitiert?", "Kannibalisiert sie andere Seiten?"],
+    canned: {
+      "warum wirkt change-set c?": "Die 6 neuen internen Links kamen von Seiten mit hoher Linkkraft im Implantologie-Cluster — die eingehende Linkkraft dieser Seite stieg um 41 %. Innerhalb von 3 Wochen zog das Top-Keyword von Position 6 auf 3. Die Attribution ist plausibel, weil im Messfenster keine andere Änderung an dieser Seite live ging.",
+      "wo wird die seite ki-zitiert?": "34 Zitationen in 30 Tagen (NENNWERT-Panel): ChatGPT 19 (v. a. Kosten-Fragen), Perplexity 9 (verlinkt direkt auf den FAQ-Abschnitt), Gemini 6. Seit Change-Set B (FAQ + Schema) hat sich die Rate fast verdreifacht — die 42-Wort-Antwort wird wörtlich übernommen. Claude zitiert die Seite bisher nicht; dort dominiert implantate-muenchen.de.",
+      "kannibalisiert sie andere seiten?": "Geringes Risiko: /ratgeber/implantat-kosten hat eine Embedding-Ähnlichkeit von 0,81 zu dieser Seite und rankte zeitweise für „zahnimplantat kosten“ auf Seite 2. Empfehlung: Der Ratgeber behält den informativen Longtail, diese Seite den kommerziellen Intent — dafür sollte der Ratgeber klar hierher verlinken. Soll ich das Change-Set vorbereiten?",
+    },
+  },
+});
+
+/* ==== Wirkungskurve ==== */
+const WEEKS = ["KW20","KW21","KW22","KW23","KW24","KW25","KW26","KW27","KW28","KW29","KW30","KW31"];
+const EVENTS = [
+  { id: "A", idx: 3, label: "Meta-Titel" },
+  { id: "B", idx: 6, label: "FAQ + Schema" },
+  { id: "C", idx: 8, label: "Interne Links" },
+];
+const METRICS = {
+  pos: {
+    sub: "Google-Position, wöchentlich — Marker A–C = live gegangene Change-Sets dieser Seite",
+    unit: "", invert: true, min: 1, max: 16, yTicks: [1, 5, 10, 15],
+    series: [
+      { name: "zahnimplantate münchen", hex: "#3987e5", vals: [14,13,13,12,10,9,7,6,4,3,3,3] },
+      { name: "zahnimplantat kosten",   hex: "#199e70", vals: [11,11,10,10,9,8,6,5,5,4,4,4] },
+    ],
+  },
+  ctr: {
+    sub: "Klickrate in der Google-Suche (GSC), wöchentlich, in Prozent",
+    unit: " %", invert: false, min: 0, max: 6, yTicks: null,
+    series: [{ name: "Gesamt-CTR dieser Seite", hex: "#3987e5", vals: [2.0,2.1,2.1,2.2,2.9,3.0,3.4,3.6,3.9,4.3,4.4,4.5] }],
+  },
+  cite: {
+    sub: "Zitationen dieser URL in KI-Antworten pro Woche (NENNWERT-Prompt-Panel, 4 Systeme)",
+    unit: "", invert: false, min: 0, max: 12, yTicks: null,
+    series: [{ name: "Zitationen/Woche", hex: "#3987e5", vals: [0,0,1,1,1,2,5,6,7,8,9,9] }],
+  },
+};
+function cfgFor(key) {
+  const m = METRICS[key];
+  document.getElementById("chartSub").textContent = m.sub;
+  renderLegend(m);
+  return { labels: WEEKS, unit: m.unit, invert: m.invert, min: m.min, max: m.max, yTicks: m.yTicks, events: EVENTS, series: m.series, h: 250 };
+}
+function renderLegend(m) {
+  WERK.legend(document.getElementById("legend"), m.series,
+    '<span class="leg"><span class="ev">A</span>–<span class="ev">C</span> Change-Set live (siehe Diff-Historie)</span>');
+}
+const chart = WERK.chart(document.getElementById("chartHost"), cfgFor("pos"));
+document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));
+  t.classList.add("active");
+  chart.update(cfgFor(t.dataset.metric));
+}));
+
+/* ==== Fix generieren → Datenlayer (erscheint im Fließband) ==== */
+document.querySelectorAll("[data-fix]").forEach((btn) =>
+  btn.addEventListener("click", () => {
+    btn.disabled = true;
+    btn.textContent = "Wird generiert …";
+    setTimeout(() => {
+      WERK.store.add({
+        stage: "pruefung", type: btn.dataset.fix, title: btn.dataset.title,
+        url: "/behandlungen/zahnimplantate", detail: "url-detail.html",
+        diff: "<ins>Vorschlag generiert — Details im Fließband prüfen</ins>",
+      });
+      const wrap = document.createElement("span");
+      wrap.className = "inband";
+      wrap.textContent = "Liegt im Fließband";
+      btn.replaceWith(wrap);
+      WERK.agentNote('Fix generiert und ins Fließband gelegt — <a href="massnahmen.html" style="color:var(--act)">dort freigeben</a>.');
+    }, 900);
+  })
+);
+
+/* ==== Rollback ==== */
+document.querySelectorAll("[data-rollback]").forEach((btn) =>
+  btn.addEventListener("click", () => {
+    const entry = btn.closest(".hentry");
+    const badge = entry.querySelector(".hbadge");
+    badge.className = "hbadge none";
+    badge.textContent = "Zurückgenommen";
+    const mark = entry.querySelector(".hmark");
+    mark.className = "hmark back";
+    mark.textContent = "×";
+    btn.replaceWith(Object.assign(document.createElement("span"), { className: "hwho", textContent: "Snapshot wiederhergestellt" }));
+    WERK.agentNote("Change-Set zurückgenommen — der vorherige Snapshot ist wiederhergestellt und die Wirkungsmessung wurde beendet.");
+  })
+);
+</script>
+</body>
+</html>

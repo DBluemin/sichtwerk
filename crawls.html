@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — Crawls &amp; Technik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+<style>
+.cwv-row { display: grid; grid-template-columns: 110px 1fr 90px; gap: 12px; align-items: center; padding: 8px 0; font-size: 12.5px; }
+.cwv-row + .cwv-row { border-top: 1px solid var(--line-soft); }
+.cwv-seg { display: flex; gap: 2px; height: 12px; border-radius: 3px; overflow: hidden; }
+.cwv-seg i { display: block; height: 100%; }
+.cwv-val { font-family: var(--font-mono); font-size: 11.5px; text-align: right; }
+.cwv-val small { display: block; color: var(--ink-3); font-size: 9.5px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <div>
+        <h1>Crawls &amp; Technik</h1>
+        <div class="lede">Crawler-Flotte, Indexierung und Core Web Vitals — technische Blocker werden erkannt und, wo möglich, direkt als Change-Set behoben.</div>
+      </div>
+      <div class="page-meta">Voll-Crawl: <b>täglich 04:00</b> · Logfile-Abgleich: <b>aktiv</b><br>robots.txt-Treue: <b>strikt</b> · Render-Quote: <b>12 % (Heuristik)</b></div>
+    </header>
+
+    <section class="scores four" aria-label="Kennzahlen">
+      <div class="score"><div class="score-label">Seiten gecrawlt</div><div class="score-row"><span class="score-val">6.240</span><span class="score-delta up">▲ 63</span></div><div class="score-vs">heute, 04:12 · Dauer 38 min</div></div>
+      <div class="score"><div class="score-label">Indexierbar</div><div class="score-row"><span class="score-val">5.890</span><span class="score-val small" style="font-size:12px;color:var(--ink-3)">94 %</span></div><div class="score-vs">350 bewusst ausgeschlossen</div></div>
+      <div class="score"><div class="score-label">Technik-Score</div><div class="score-row"><span class="score-val">84</span><span class="score-delta up">▲ 6</span></div><div class="score-vs">Ø Branche Dental: 61</div></div>
+      <div class="score"><div class="score-label">Crawlbudget-Effizienz</div><div class="score-row"><span class="score-val">78<small>%</small></span><span class="score-delta down">▼ 4</span></div><div class="score-vs">robots-Konflikt drückt den Wert</div></div>
+    </section>
+
+    <div class="duo-even">
+      <section class="panel" aria-label="Indexierungs-Trichter">
+        <div class="panel-head"><div><div class="panel-title">Indexierungs-Trichter</div><div class="panel-sub">Vom Crawl bis zur Impression — wo Seiten verloren gehen</div></div></div>
+        <div class="panel-body"><div class="hbars" id="funnel"></div></div>
+      </section>
+
+      <section class="panel" aria-label="Core Web Vitals">
+        <div class="panel-head"><div><div class="panel-title">Core Web Vitals (p75, Felddaten)</div><div class="panel-sub">Anteil der Seiten: <span style="color:var(--good)">gut</span> · <span style="color:var(--warn)">verbesserungswürdig</span> · <span style="color:var(--crit)">schlecht</span></div></div></div>
+        <div class="panel-body">
+          <div class="cwv-row"><span>LCP</span><span class="cwv-seg"><i style="width:71%;background:var(--good)"></i><i style="width:21%;background:var(--warn)"></i><i style="width:8%;background:var(--crit)"></i></span><span class="cwv-val">2,3 s<small>Ziel &lt; 2,5 s</small></span></div>
+          <div class="cwv-row"><span>INP</span><span class="cwv-seg"><i style="width:58%;background:var(--good)"></i><i style="width:30%;background:var(--warn)"></i><i style="width:12%;background:var(--crit)"></i></span><span class="cwv-val">240 ms<small>Ziel &lt; 200 ms</small></span></div>
+          <div class="cwv-row"><span>CLS</span><span class="cwv-seg"><i style="width:88%;background:var(--good)"></i><i style="width:9%;background:var(--warn)"></i><i style="width:3%;background:var(--crit)"></i></span><span class="cwv-val">0,04<small>Ziel &lt; 0,1</small></span></div>
+          <div style="font-size:11.5px;color:var(--ink-3);margin-top:10px">Größter Hebel: Terminbuchungs-Widget blockiert den Hauptthread (INP 520 ms auf /termin). Fix-Vorschlag: Skript verzögert laden.</div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" aria-label="Technik-Findings">
+      <div class="panel-head"><div><div class="panel-title">Technik-Findings <span class="cnt">6 offen</span></div><div class="panel-sub">Deterministische Prüfer · nach Schweregrad</div></div></div>
+      <div class="list">
+        <div class="li"><span class="li-sev sev-crit">Kritisch</span><div class="li-body"><div class="li-title">38 Seiten per robots.txt gesperrt, aber intern verlinkt</div><div class="li-sub">/filter/*-Parameter-URLs · Crawlbudget läuft ins Leere, Linkkraft versickert.</div></div><div class="li-side"><span class="roi">91<small>ROI-Score</small></span><button class="fixbtn" data-fix="Technik" data-title="robots-Konflikt: 38 Filter-URLs entlinken">Fix generieren</button></div></div>
+        <div class="li"><span class="li-sev sev-crit">Kritisch</span><div class="li-body"><div class="li-title">Weiterleitungskette auf 7 Behandlungsseiten</div><div class="li-sub">301 → 302 → 200 nach Relaunch · Linkkraft-Verlust ~34 %.</div></div><div class="li-side"><span class="roi">86<small>ROI-Score</small></span><button class="fixbtn" data-fix="Technik" data-title="7 Redirect-Ketten auf Direktziel kürzen">Fix generieren</button></div></div>
+        <div class="li"><span class="li-sev sev-hoch">Hoch</span><div class="li-body"><div class="li-title">12 interne Links auf 404</div><div class="li-sub">Alte Ratgeber-URLs · Ziel existiert unter neuem Pfad.</div></div><div class="li-side"><span class="roi">64<small>ROI-Score</small></span><button class="fixbtn" data-fix="Links" data-title="12 defekte interne Links umziehen">Fix generieren</button></div></div>
+        <div class="li"><span class="li-sev sev-hoch">Hoch</span><div class="li-body"><div class="li-title">Sitemap-Drift: 214 URLs in Sitemap, aber 404/410</div><div class="li-sub">Sitemap wird aus altem Export generiert.</div></div><div class="li-side"><span class="roi">58<small>ROI-Score</small></span><button class="fixbtn" data-fix="Technik" data-title="Sitemap bereinigen (214 tote URLs)">Fix generieren</button></div></div>
+        <div class="li"><span class="li-sev sev-mittel">Mittel</span><div class="li-body"><div class="li-title">4 Canonical-Konflikte (Canonical ≠ og:url)</div><div class="li-sub">Uneinheitliche Signale auf Standortseiten.</div></div><div class="li-side"><span class="roi">39<small>ROI-Score</small></span><button class="fixbtn" data-fix="Technik" data-title="4 Canonical-Konflikte vereinheitlichen">Fix generieren</button></div></div>
+        <div class="li"><span class="li-sev sev-mittel">Mittel</span><div class="li-body"><div class="li-title">Duplicate Content: Bleaching-Cluster (4 URLs, 94 %)</div><div class="li-sub">Bereits erkannt — Canonical-Vorschlag wird generiert (siehe Fließband).</div></div><div class="li-side"><span class="roi">44<small>ROI-Score</small></span><span class="inband">Liegt im Fließband</span></div></div>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Crawl-Verlauf">
+      <div class="panel-head"><div><div class="panel-title">Crawl-Verlauf</div><div class="panel-sub">Letzte 5 Läufe</div></div></div>
+      <div class="tblwrap">
+        <table class="tbl">
+          <thead><tr><th>Start</th><th>Typ</th><th style="text-align:right">Seiten</th><th style="text-align:right">Gerendert</th><th style="text-align:right">Dauer</th><th style="text-align:right">Neue Findings</th><th style="text-align:right">Behoben</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">02.08. 04:12</td><td>Voll</td><td class="num">6.240</td><td class="num">748</td><td class="num">38 min</td><td class="num">14</td><td class="num tr-up">9</td><td><span class="tag tag-good">Abgeschlossen</span></td></tr>
+            <tr><td class="mono">01.08. 04:11</td><td>Voll</td><td class="num">6.177</td><td class="num">741</td><td class="num">37 min</td><td class="num">8</td><td class="num tr-up">11</td><td><span class="tag tag-good">Abgeschlossen</span></td></tr>
+            <tr><td class="mono">31.07. 16:20</td><td>Delta (Fließband)</td><td class="num">96</td><td class="num">12</td><td class="num">2 min</td><td class="num">0</td><td class="num tr-up">12</td><td><span class="tag tag-good">Abgeschlossen</span></td></tr>
+            <tr><td class="mono">31.07. 04:12</td><td>Voll</td><td class="num">6.174</td><td class="num">739</td><td class="num">39 min</td><td class="num">11</td><td class="num tr-up">6</td><td><span class="tag tag-good">Abgeschlossen</span></td></tr>
+            <tr><td class="mono">30.07. 04:10</td><td>Voll</td><td class="num">6.170</td><td class="num">736</td><td class="num">41 min</td><td class="num">19</td><td class="num tr-up">14</td><td><span class="tag tag-good">Abgeschlossen</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "crawls",
+  dock: {
+    context: "Crawls &amp; Technik",
+    chips: ["Warum sinkt die Crawlbudget-Effizienz?", "Was blockiert die Indexierung?"],
+    canned: {
+      "warum sinkt die crawlbudget-effizienz?": "Der robots-Konflikt: 38 gesperrte Filter-URLs werden weiter intern verlinkt, Googlebot fordert sie trotzdem an und verschwendet dort ~9 % des Budgets. Der Fix (Entlinken + nofollow auf Filter-Facetten) liegt bereit — nach Freigabe sollte die Effizienz in 2 Wochen wieder über 85 % liegen.",
+      "was blockiert die indexierung?": "Von 5.890 indexierbaren Seiten sind 376 nicht im Index: 214 durch Sitemap-Drift (tote URLs verwässern das Vertrauen), 96 als „Gecrawlt, nicht indexiert“ (dünne Varianten-Seiten des Bleaching-Clusters), 66 zu neu. Sitemap-Fix und Canonical-Konsolidierung zusammen adressieren 310 davon.",
+    },
+  },
+});
+WERK.hbars(document.getElementById("funnel"), [
+  { label: "Gecrawlt", val: 6240, max: 6240, display: "6.240" },
+  { label: "Indexierbar", val: 5890, max: 6240, display: "5.890" },
+  { label: "Im Google-Index", val: 5514, max: 6240, display: "5.514" },
+  { label: "Mit Impressionen (28 T)", val: 4901, max: 6240, display: "4.901" },
+  { label: "Mit Klicks (28 T)", val: 2380, max: 6240, display: "2.380" },
+]);
+document.querySelectorAll("[data-fix]").forEach((btn) =>
+  btn.addEventListener("click", () => {
+    btn.disabled = true; btn.textContent = "Wird generiert …";
+    setTimeout(() => {
+      WERK.store.add({ stage: "pruefung", type: btn.dataset.fix, title: btn.dataset.title, url: "projektweit", diff: "<ins>Vorschlag generiert — Details im Fließband prüfen</ins>" });
+      const s = document.createElement("span"); s.className = "inband"; s.textContent = "Liegt im Fließband";
+      btn.replaceWith(s);
+      WERK.agentNote('Fix generiert — <a href="massnahmen.html" style="color:var(--act)">im Fließband freigeben</a>.');
+    }, 900);
+  })
+);
+</script>
+</body>
+</html>

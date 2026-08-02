@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — Übersicht · ein DentalConnect Produkt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <h1>Guten Morgen, Daniel.<br><span class="await"><span data-pruefung-count>0</span> Maßnahmen</span> warten auf Ihre Freigabe.</h1>
+      <div class="page-meta">
+        Letzter Voll-Crawl: <b>heute, 04:12</b> · 6.240 Seiten<br>
+        KI-Zitations-Stichprobe via <b>NENNWERT</b>: heute, 05:30 · 500 Prompts, 4 Systeme
+      </div>
+    </header>
+
+    <section class="scores" aria-label="Gesamt-Scores">
+      <div class="score"><div class="score-label">SEO Gesamt</div><div class="score-row"><span class="score-val">78</span><span class="score-delta up">▲ 3</span></div><div class="score-bar"><i style="width:78%"></i></div><svg class="score-spark" width="52" height="20" data-spark="62,64,66,65,69,71,74,75,78"></svg></div>
+      <div class="score"><div class="score-label">Technik</div><div class="score-row"><span class="score-val">84</span><span class="score-delta up">▲ 6</span></div><div class="score-bar"><i style="width:84%"></i></div><svg class="score-spark" width="52" height="20" data-spark="70,72,71,75,78,77,80,82,84"></svg></div>
+      <div class="score"><div class="score-label">Content</div><div class="score-row"><span class="score-val">71</span><span class="score-delta up">▲ 2</span></div><div class="score-bar"><i style="width:71%"></i></div><svg class="score-spark" width="52" height="20" data-spark="64,66,65,67,68,70,69,70,71"></svg></div>
+      <div class="score"><div class="score-label">AEO</div><div class="score-row"><span class="score-val">62</span><span class="score-delta up">▲ 5</span></div><div class="score-bar"><i style="width:62%"></i></div><svg class="score-spark" width="52" height="20" data-spark="48,50,53,52,55,57,58,60,62"></svg></div>
+      <div class="score"><div class="score-label">GEO / KI</div><div class="score-row"><span class="score-val">58</span><span class="score-delta up">▲ 9</span></div><div class="score-bar"><i style="width:58%"></i></div><svg class="score-spark" width="52" height="20" data-spark="34,38,41,44,46,49,52,55,58"></svg></div>
+      <div class="score"><div class="score-label">EEAT</div><div class="score-row"><span class="score-val">74</span><span class="score-delta down">▼ 1</span></div><div class="score-bar"><i style="width:74%"></i></div><svg class="score-spark" width="52" height="20" data-spark="73,74,75,76,75,75,74,75,74"></svg></div>
+    </section>
+
+    <section class="panel" aria-label="Sichtbarkeitsentwicklung">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Sichtbarkeit im Wettbewerb</div>
+          <div class="panel-sub" id="chartSub">Sichtbarkeitsindex über 2.140 überwachte Keywords, täglich aggregiert</div>
+        </div>
+        <div class="tabs" role="tablist" style="margin-left:18px">
+          <button class="tab active" data-metric="google" role="tab">Google</button>
+          <button class="tab" data-metric="ai" role="tab">KI-Zitationen</button>
+          <button class="tab" data-metric="cwv" role="tab">Core Web Vitals</button>
+        </div>
+        <div class="ranges">
+          <button class="range">30&thinsp;T</button>
+          <button class="range">90&thinsp;T</button>
+          <button class="range active">12&thinsp;M</button>
+        </div>
+      </div>
+      <div class="chart-wrap" id="chartHost"></div>
+      <div class="chart-legend" id="legend"></div>
+    </section>
+
+    <section class="panel" aria-label="Maßnahmen-Fließband">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Maßnahmen-Fließband</div>
+          <div class="panel-sub">Die Maschine erkennt und generiert — live geht nur, was Sie freigeben. Jede Änderung ist versioniert und rückholbar.</div>
+        </div>
+        <div class="band-head-note">
+          <span class="k"><i style="background:var(--measure)"></i> Maschine</span>
+          <span class="k"><i style="background:var(--act)"></i> Ihre Freigabe</span>
+          <span class="k"><i style="background:var(--good)"></i> Live</span>
+        </div>
+      </div>
+      <div class="band" id="bandRoot"></div>
+    </section>
+
+    <div class="tri">
+      <section class="panel" aria-label="Quick Wins">
+        <div class="panel-head"><div><div class="panel-title">Quick Wins</div><div class="panel-sub">Hoher Effekt, geringer Aufwand</div></div></div>
+        <div class="list">
+          <div class="li"><div class="li-ico ico-act">↗</div><div class="li-body"><div class="li-title">Position 11 → Seite 1: „Zahnkrone Kosten"</div><div class="li-sub">Content-Tiefe +12&thinsp;%, 2 interne Links nötig</div></div><div class="li-kpi">+880<small>Besuche/M.</small></div></div>
+          <div class="li"><div class="li-ico ico-act">↗</div><div class="li-body"><div class="li-title"><a href="url-detail.html">Antwortbox-Chance: „Was kostet ein Implantat?"</a></div><div class="li-sub">Präzise 40-Wort-Antwort im Intro platzieren</div></div><div class="li-kpi">+610<small>Besuche/M.</small></div></div>
+          <div class="li"><div class="li-ico ico-act">↗</div><div class="li-body"><div class="li-title">12 Meta-Titel unter 30 Zeichen</div><div class="li-sub">Vorschläge liegen im Fließband bereit</div></div><div class="li-kpi">+4,2&thinsp;%<small>CTR erwartet</small></div></div>
+          <div class="li"><div class="li-ico ico-act">↗</div><div class="li-body"><div class="li-title">Standortseite Nürnberg indexierbar machen</div><div class="li-sub">noindex-Rest aus Relaunch, seit 41 Tagen</div></div><div class="li-kpi">+1.400<small>Besuche/M.</small></div></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Kritische Fehler">
+        <div class="panel-head"><div><div class="panel-title">Kritische Fehler</div><div class="panel-sub">Blockieren Rankings — zuerst beheben</div></div></div>
+        <div class="list">
+          <div class="li"><div class="li-ico ico-crit">✕</div><div class="li-body"><div class="li-title"><a href="crawls.html">38 Seiten per robots.txt gesperrt, aber verlinkt</a></div><div class="li-sub">Crawlbudget läuft ins Leere · seit 3 Tagen</div></div><div class="li-kpi">Kritisch</div></div>
+          <div class="li"><div class="li-ico ico-crit">✕</div><div class="li-body"><div class="li-title"><a href="crawls.html">Weiterleitungskette auf 7 Behandlungsseiten</a></div><div class="li-sub">301 → 302 → 200, Linkkraft-Verlust ~34&thinsp;%</div></div><div class="li-kpi">Kritisch</div></div>
+          <div class="li"><div class="li-ico ico-crit">✕</div><div class="li-body"><div class="li-title"><a href="lokal.html">hreflang de-AT zeigt auf 404</a></div><div class="li-sub">6 URLs · betrifft Standort-Rollout Österreich</div></div><div class="li-kpi">Hoch</div></div>
+          <div class="li"><div class="li-ico ico-crit">✕</div><div class="li-body"><div class="li-title">INP über 500&thinsp;ms auf Terminbuchung</div><div class="li-sub">Blockierendes Widget-Skript im Head</div></div><div class="li-kpi">Hoch</div></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Chancen mit höchstem ROI">
+        <div class="panel-head"><div><div class="panel-title">Höchster ROI</div><div class="panel-sub">Neue Seiten &amp; Content-Gaps, priorisiert</div></div></div>
+        <div class="list">
+          <div class="li"><div class="li-ico ico-meas">◈</div><div class="li-body"><div class="li-title"><a href="keywords.html">Landingpage „Invisalign München"</a></div><div class="li-sub">2.900 Suchen/M. · Wettbewerb schlagbar (DA-Lücke)</div></div><div class="li-kpi">92<small>ROI-Score</small></div></div>
+          <div class="li"><div class="li-ico ico-meas">◈</div><div class="li-body"><div class="li-title"><a href="links.html">Pillar-Seite „Zahnersatz-Ratgeber"</a></div><div class="li-sub">Bündelt 14 bestehende Artikel, Cluster unvollständig</div></div><div class="li-kpi">87<small>ROI-Score</small></div></div>
+          <div class="li"><div class="li-ico ico-meas">◈</div><div class="li-body"><div class="li-title"><a href="geo.html">GEO-Gap: ChatGPT nennt nur Wettbewerber</a></div><div class="li-sub">Bei „bester Zahnarzt München" — Quellenseiten fehlen</div></div><div class="li-kpi">85<small>ROI-Score</small></div></div>
+          <div class="li"><div class="li-ico ico-meas">◈</div><div class="li-body"><div class="li-title">Autoren-Profile mit Facharzt-Nachweis</div><div class="li-sub">EEAT: 23 Ratgeber ohne erkennbare Autorenschaft</div></div><div class="li-kpi">81<small>ROI-Score</small></div></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "dashboard",
+  dock: {
+    seed:
+      '<div class="msg msg-user">Optimiere meine Startseite für Zahnimplantate in München.</div>' +
+      '<div class="msg msg-agent"><div class="who">Werksleiter</div><div class="bubble">Verstanden. Ich habe die Startseite gegen die Top-10 für „Zahnimplantate München“ analysiert:' +
+      '<div class="agent-steps">' +
+      '<div class="agent-step"><span class="st done">✓</span>SERP + 3 Wettbewerber gecrawlt</div>' +
+      '<div class="agent-step"><span class="st done">✓</span>Semantische Lücken: 9 Begriffe fehlen</div>' +
+      '<div class="agent-step"><span class="st done">✓</span>Titel, H1 und Intro-Absatz neu formuliert</div>' +
+      '<div class="agent-step"><span class="st done">✓</span>FAQ-Block (5 Fragen) + Schema erzeugt</div>' +
+      '<div class="agent-step"><span class="st run">●</span>Interne Links aus dem Implantologie-Cluster</div>' +
+      '</div><a class="agent-cta" href="massnahmen.html">Änderungen liegen im Fließband → Prüfung</a></div></div>',
+    chips: ["Verbessere alle Landingpages", "20 neue Content-Ideen", "Warum sank EEAT?"],
+    canned: {
+      "verbessere alle landingpages": "Ich habe 34 Landingpages nach Potenzial sortiert. Für die Top 10 bereite ich jetzt Titel, Antwortabsätze und interne Links vor — die Änderungen erscheinen nacheinander im Fließband. Die restlichen 24 folgen nach Ihrer ersten Freigabewelle.",
+      "20 neue content-ideen": "Aus 412 offenen Suchanfragen Ihres Marktes habe ich 20 Ideen mit Suchvolumen, Wettbewerbsstärke und Cluster-Zuordnung erstellt — sortiert nach ROI-Score. Die Liste liegt unter Keywords &amp; Chancen. Top-Kandidat: „Zahnimplantat trotz Parodontitis?“ (720 Suchen/M., keine gute Antwort in den Top 10).",
+      "warum sank eeat?": "Der EEAT-Score fiel um 1 Punkt, weil 3 neue Ratgeber ohne Autorenprofil publiziert wurden und ein zitiertes Studien-PDF jetzt 404 liefert. Beides ist behebbar: Autorenboxen liegen im Fließband, den toten Beleg habe ich durch die archivierte Quelle ersetzt — wartet auf Freigabe.",
+    },
+  },
+});
+
+/* ==== Sichtbarkeits-Chart ==== */
+const MONTHS = ["Sep","Okt","Nov","Dez","Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug"];
+const NAMES = [
+  { name: "Sie", hex: "#3987e5" },
+  { name: "implantate-muenchen", hex: "#d95926" },
+  { name: "dr-weber-zahnklinik", hex: "#199e70" },
+  { name: "zahnzentrum-sued", hex: "#c98500" },
+];
+const DATA = {
+  google: {
+    sub: "Sichtbarkeitsindex über 2.140 überwachte Keywords, täglich aggregiert",
+    unit: "", min: 0, max: 90,
+    rows: [[41,43,44,47,46,50,53,55,59,62,65,68],[74,73,75,74,72,73,72,71,72,71,70,71],[55,54,56,57,56,58,57,59,58,59,58,58],[30,31,30,32,33,32,34,33,35,34,36,35]],
+  },
+  ai: {
+    sub: "Anteil von 500 NENNWERT-Prompt-Stichproben (ChatGPT, Gemini, Claude, Perplexity), in denen die Domain zitiert wird",
+    unit: " %", min: 0, max: 40,
+    rows: [[6,7,7,8,9,10,12,13,15,16,18,19],[22,23,24,24,25,26,26,27,27,28,28,29],[11,11,12,12,13,12,13,14,13,14,14,15],[3,3,4,4,4,5,5,5,6,6,6,7]],
+  },
+  cwv: {
+    sub: "LCP p75 in Sekunden (CrUX-Felddaten), Startseite — niedriger ist besser",
+    unit: " s", min: 0, max: 5,
+    rows: [[3.8,3.7,3.6,3.4,3.3,3.1,2.9,2.8,2.6,2.5,2.4,2.3],[1.6,1.5,1.6,1.5,1.4,1.5,1.4,1.4,1.5,1.4,1.4,1.4],[2.9,2.8,2.9,2.8,2.7,2.8,2.7,2.6,2.7,2.6,2.7,2.6],[4.4,4.3,4.4,4.2,4.3,4.1,4.2,4.0,4.1,4.0,3.9,4.0]],
+  },
+};
+function cfgFor(key) {
+  const d = DATA[key];
+  document.getElementById("chartSub").textContent = d.sub;
+  return {
+    labels: MONTHS, unit: d.unit, min: d.min, max: d.max, h: 260,
+    series: d.rows.map((vals, i) => ({ name: NAMES[i].name, hex: NAMES[i].hex, vals })),
+  };
+}
+const chart = WERK.chart(document.getElementById("chartHost"), cfgFor("google"));
+WERK.legend(document.getElementById("legend"),
+  [{name:"Sie — smiledental-gruppe.de",hex:"#3987e5"},{name:"implantate-muenchen.de",hex:"#d95926"},{name:"dr-weber-zahnklinik.de",hex:"#199e70"},{name:"zahnzentrum-sued.de",hex:"#c98500"}]);
+document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach((x) => x.classList.remove("active"));
+  t.classList.add("active");
+  chart.update(cfgFor(t.dataset.metric));
+}));
+
+/* ==== Fließband aus dem Datenlayer ==== */
+WERK.renderBand("bandRoot");
+</script>
+</body>
+</html>

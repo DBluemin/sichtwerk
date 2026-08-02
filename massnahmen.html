@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — Maßnahmen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+<style>
+.typefilter { display: flex; gap: 6px; flex-wrap: wrap; padding: 12px 16px 0; }
+.tf {
+  border: 1px solid var(--line); background: transparent; color: var(--ink-2);
+  border-radius: 20px; padding: 4px 12px; font-size: 11.5px; font-weight: 600;
+}
+.tf.active { border-color: rgba(240,168,64,.5); background: var(--act-dim); color: var(--act); }
+</style>
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <div>
+        <h1>Maßnahmen — <span class="await"><span data-pruefung-count>0</span> in Ihrer Prüfung</span></h1>
+        <div class="lede">Das vollständige Fließband. Jede Freigabe wird versioniert ausgespielt und 14/28 Tage auf Wirkung gemessen — wirkungslose Änderungen schlägt das System zur Rücknahme vor.</div>
+      </div>
+      <div class="page-meta">Freigabe-Modus: <b id="pilotLabel">—</b> · <a href="einstellungen.html" style="color:var(--measure)">ändern</a><br>Audit-Protokoll: <b>vollständig, exportierbar</b></div>
+    </header>
+
+    <section class="panel" aria-label="Fließband" style="margin-top:8px">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Maßnahmen-Fließband</div>
+          <div class="panel-sub">Die Maschine erkennt und generiert — live geht nur, was Sie freigeben.</div>
+        </div>
+        <div class="band-head-note">
+          <span class="k"><i style="background:var(--measure)"></i> Maschine</span>
+          <span class="k"><i style="background:var(--act)"></i> Ihre Freigabe</span>
+          <span class="k"><i style="background:var(--good)"></i> Live</span>
+        </div>
+      </div>
+      <div class="typefilter" id="typeFilter"></div>
+      <div class="band" id="bandRoot"></div>
+    </section>
+
+    <section class="panel" aria-label="Wirkungs-Protokoll">
+      <div class="panel-head"><div><div class="panel-title">Wirkungs-Protokoll</div><div class="panel-sub">Abgeschlossene Messfenster der letzten 60 Tage</div></div></div>
+      <div class="hist">
+        <div class="hentry">
+          <div class="hmark live">✓</div>
+          <div class="hbody">
+            <div class="hrow1"><span class="htitle">6 interne Links, Implantologie-Cluster</span><span class="hdate">12.07. · Messfenster abgeschlossen</span><span class="hbadge works">Wirksam</span></div>
+            <div class="himpact"><span>Position: <b class="pos">6 → 3</b></span><span>Linkkraft: <b class="pos">+41 %</b></span><span><a href="url-detail.html" style="color:var(--measure)">Zur Seite</a></span></div>
+          </div>
+        </div>
+        <div class="hentry">
+          <div class="hmark live">✓</div>
+          <div class="hbody">
+            <div class="hrow1"><span class="htitle">FAQ-Block + Schema, Zahnimplantate</span><span class="hdate">28.06. · Messfenster abgeschlossen</span><span class="hbadge works">Wirksam</span></div>
+            <div class="himpact"><span>SERP: <b class="pos">Antwortbox gewonnen</b></span><span>KI-Zitationen: <b class="pos">+9/Monat</b></span></div>
+          </div>
+        </div>
+        <div class="hentry">
+          <div class="hmark live">✓</div>
+          <div class="hbody">
+            <div class="hrow1"><span class="htitle">Meta-Titel, Zahnimplantate</span><span class="hdate">14.06. · Messfenster abgeschlossen</span><span class="hbadge works">Wirksam</span></div>
+            <div class="himpact"><span>CTR: <b class="pos">+0,9 pp</b></span><span>Position: <b>unverändert</b></span></div>
+          </div>
+        </div>
+        <div class="hentry">
+          <div class="hmark back">×</div>
+          <div class="hbody">
+            <div class="hrow1"><span class="htitle">Content-Erweiterung „Materialvergleich"</span><span class="hdate">02.06. · zurückgenommen 01.07.</span><span class="hbadge none">Ohne Wirkung — zurückgenommen</span></div>
+            <div class="himpact"><span>Nach 28 Tagen keine messbare Veränderung, Scroll-Tiefe −6 % · Snapshot #451 wiederhergestellt.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "massnahmen",
+  dock: {
+    context: "Maßnahmen-Fließband",
+    chips: ["Gib alle Alt-Text-Sets frei?", "Was ist am dringendsten?"],
+    canned: {
+      "gib alle alt-text-sets frei?": "Das kann nur Ihre Freigabe — ich darf nicht selbst freigeben. Aber: Alt-Texte sind als Bagatell-Typ markiert. Wenn Sie unter Einstellungen den Autopilot auf Stufe 2 stellen, gehen künftige Alt-Text-Sets automatisch live und erscheinen rückholbar im Protokoll.",
+      "was ist am dringendsten?": "Der hreflang-Fix (de-AT → 404): Er blockiert den Österreich-Rollout und kostet täglich Vertrauen. Danach der robots-Konflikt aus Crawls &amp; Technik. Beide sind risikoarm und in Minuten ausgespielt.",
+    },
+  },
+});
+
+/* Typ-Filter über dem Fließband */
+const TYPES = ["Alle", "Meta", "Schema", "Links", "Content", "AEO", "EEAT", "Technik", "Alt-Texte", "CWV", "Lokal"];
+let activeType = "";
+const tf = document.getElementById("typeFilter");
+tf.innerHTML = TYPES.map((t) => '<button class="tf' + (t === "Alle" ? " active" : "") + '" data-t="' + (t === "Alle" ? "" : t) + '">' + t + "</button>").join("");
+tf.querySelectorAll(".tf").forEach((b) =>
+  b.addEventListener("click", () => {
+    tf.querySelectorAll(".tf").forEach((x) => x.classList.remove("active"));
+    b.classList.add("active");
+    activeType = b.dataset.t;
+    WERK.renderBand("bandRoot", activeType);
+  })
+);
+WERK.renderBand("bandRoot");
+
+/* Autopilot-Label aus dem Datenlayer */
+const PILOT_NAMES = ["Beobachten", "Alles prüfen", "Bagatellen automatisch", "Autopilot mit Wächter"];
+document.getElementById("pilotLabel").textContent =
+  "Stufe " + WERK.store.autopilot.get() + " — " + PILOT_NAMES[WERK.store.autopilot.get()];
+</script>
+</body>
+</html>

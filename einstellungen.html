@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — Einstellungen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <div>
+        <h1>Einstellungen</h1>
+        <div class="lede">Autopilot-Grad, Konnektoren und Rollen. Der Publish-Weg verlangt architektonisch eine Freigabe-Signatur oder eine hier explizit gesetzte Auto-Regel.</div>
+      </div>
+      <div class="page-meta">Mandant: <b>SmileDental Gruppe</b> · Plan: <b>Praxis-Gruppe</b><br>Datenregion: <b>EU (Amsterdam)</b> · AVV: <b>unterzeichnet</b></div>
+    </header>
+
+    <section class="panel" aria-label="Autopilot">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Autopilot-Stufe</div>
+          <div class="panel-sub">SEO on Autopilot — aber mit Flugschreiber: Auch auf Stufe 3 bleibt jede Änderung versioniert, protokolliert und rückholbar. Der Wächter nimmt wirkungslose Änderungen selbst zurück.</div>
+        </div>
+      </div>
+      <div class="pilot" id="pilot">
+        <button class="pilot-opt" data-lvl="0">
+          <span class="p-lvl">STUFE 0</span>
+          <div class="p-name">Beobachten</div>
+          <div class="p-desc">Nur messen und erkennen. Keine Vorschläge werden generiert. Für die Einführungsphase.</div>
+        </button>
+        <button class="pilot-opt" data-lvl="1">
+          <span class="p-lvl">STUFE 1</span>
+          <div class="p-name">Alles prüfen</div>
+          <div class="p-desc">Die Maschine generiert jede Maßnahme — live geht ausschließlich, was Sie im Fließband freigeben.</div>
+        </button>
+        <button class="pilot-opt" data-lvl="2">
+          <span class="p-lvl">STUFE 2</span>
+          <div class="p-name">Bagatellen automatisch</div>
+          <div class="p-desc">Alt-Texte, Canonical-Fixes, defekte Links gehen direkt live (rückholbar). Inhaltliches bleibt bei Ihnen.</div>
+        </button>
+        <button class="pilot-opt" data-lvl="3">
+          <span class="p-lvl">STUFE 3</span>
+          <div class="p-name">Autopilot mit Wächter</div>
+          <div class="p-desc">Auch Meta, Schema und interne Links automatisch. Der Wirkungs-Wächter rollt Wirkungsloses selbst zurück. Content-Änderungen bleiben immer freigabepflichtig.</div>
+        </button>
+      </div>
+      <div style="padding:0 16px 16px;font-size:11.5px;color:var(--ink-3)" id="pilotHint"></div>
+    </section>
+
+    <section class="panel" aria-label="Konnektoren">
+      <div class="panel-head"><div><div class="panel-title">Konnektoren</div><div class="panel-sub">Ausspielwege und Datenquellen</div></div></div>
+      <div class="conn">
+        <div class="conn-card"><div class="c-ico">W</div><div class="c-body"><div class="c-name">WordPress</div><div class="c-sub">smiledental-gruppe.de · jede Änderung als Revision</div></div><span class="tag tag-good">Verbunden</span></div>
+        <div class="conn-card"><div class="c-ico">N</div><div class="c-body"><div class="c-name">NENNWERT-Engine</div><div class="c-sub">KI-Zitations-Panel · nennwert.dental-connect.eu · EU (Amsterdam)</div></div><span class="tag tag-good">Verbunden</span></div>
+        <div class="conn-card"><div class="c-ico">G</div><div class="c-body"><div class="c-name">Google Search Console</div><div class="c-sub">Impressionen, CTR, Indexstatus · täglich</div></div><span class="tag tag-good">Verbunden</span></div>
+        <div class="conn-card"><div class="c-ico">B</div><div class="c-body"><div class="c-name">Google Business Profile</div><div class="c-sub">3 Standorte · Öffnungszeiten, Posts, Q&amp;A</div></div><span class="tag tag-warn">Nur Lesen</span></div>
+        <div class="conn-card"><div class="c-ico">E</div><div class="c-body"><div class="c-name">Edge-Layer</div><div class="c-sub">Meta/Schema at-request-time — für Systeme ohne CMS-Zugriff</div></div><span class="tag tag-mut">Nicht aktiv</span></div>
+        <div class="conn-card"><div class="c-ico">D</div><div class="c-body"><div class="c-name">DentalConnect Praxenverzeichnis</div><div class="c-sub">Verifiziertes Praxisprofil + strukturierte Daten im DC-Ökosystem</div></div><span class="tag tag-good">Verbunden</span></div>
+      </div>
+    </section>
+
+    <div class="duo-even">
+      <section class="panel" aria-label="Rollen">
+        <div class="panel-head"><div><div class="panel-title">Rollen &amp; Freigaben</div><div class="panel-sub">Approver-Rolle ist von Editor getrennt — Vier-Augen-Prinzip erzwingbar</div></div></div>
+        <div class="tblwrap">
+          <table class="tbl">
+            <thead><tr><th>Person</th><th>Rolle</th><th style="text-align:right">Freigaben (30 T)</th><th>2FA</th></tr></thead>
+            <tbody>
+              <tr><td><b>D. Bluemin</b></td><td><span class="tag tag-meas">Owner + Approver</span></td><td class="num">31</td><td><span class="tag tag-good">Aktiv</span></td></tr>
+              <tr><td>M. Berger</td><td><span class="tag tag-meas">Approver</span></td><td class="num">12</td><td><span class="tag tag-good">Aktiv</span></td></tr>
+              <tr><td>Praxis-Marketing</td><td><span class="tag tag-mut">Editor</span></td><td class="num">—</td><td><span class="tag tag-warn">Ausstehend</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Crawl und Demo">
+        <div class="panel-head"><div><div class="panel-title">Crawl &amp; Prototyp</div></div></div>
+        <div class="prof">
+          <div class="prof-sec">
+            <div class="prof-label">Crawl-Konfiguration</div>
+            <div class="kv"><span class="k">Voll-Crawl</span><span class="v mono">täglich 04:00 · max. 4 req/s · robots.txt strikt</span></div>
+            <div class="kv"><span class="k">Rendering</span><span class="v mono">heuristisch (~12 % der Seiten)</span></div>
+            <div class="kv"><span class="k">Logfiles</span><span class="v mono">S3-Import · Bot-Abgleich aktiv</span></div>
+          </div>
+          <div class="prof-sec">
+            <div class="prof-label">Prototyp-Datenlayer</div>
+            <div class="kv"><span class="v" style="color:var(--ink-2);font-size:12px">Dieser Klick-Prototyp simuliert das Backend im Browser (localStorage). Freigaben, Fix-Generierungen und die Autopilot-Stufe wirken seitenübergreifend.</span></div>
+            <div class="kv" style="margin-top:6px"><button class="btn" id="resetBtn">Demo-Daten zurücksetzen</button></div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "einstellungen",
+  dock: {
+    context: "Einstellungen",
+    chips: ["Welche Stufe empfiehlst du?", "Was macht der Wächter genau?"],
+    canned: {
+      "welche stufe empfiehlst du?": "Stufe 2. Ihre Freigabe-Historie zeigt: Alt-Texte, Canonical- und Link-Fixes haben Sie in 100 % der Fälle unverändert freigegeben — das sind 40 % der Klicks ohne Entscheidungswert. Stufe 3 würde ich erst nach 2–3 weiteren Monaten Wirkungs-Historie empfehlen, wenn der Wächter genug Kalibrierungsdaten hat.",
+      "was macht der wächter genau?": "Jede automatisch ausgespielte Änderung bekommt ein Messfenster (14/28 Tage) mit Vorher-Baseline. Verschlechtert sich die Zielmetrik signifikant, rollt der Wächter sofort zurück; bleibt sie 28 Tage wirkungslos, schlägt er die Rücknahme vor. Alles landet im Audit-Protokoll — Autopilot heißt hier nie unbeobachtet.",
+    },
+  },
+});
+
+const HINTS = [
+  "Aktiv: Das System misst und erkennt, generiert aber nichts.",
+  "Aktiv: Standard-Governance — jede Maßnahme läuft durch Ihre Prüfung.",
+  "Aktiv: Bagatellen (Alt-Texte, Canonicals, defekte Links) gehen automatisch live und erscheinen rückholbar im Protokoll.",
+  "Aktiv: Maximale Automatisierung. Content bleibt freigabepflichtig; der Wirkungs-Wächter überwacht jedes Set.",
+];
+function renderPilot() {
+  const lvl = WERK.store.autopilot.get();
+  document.querySelectorAll(".pilot-opt").forEach((b) =>
+    b.classList.toggle("active", Number(b.dataset.lvl) === lvl)
+  );
+  document.getElementById("pilotHint").textContent = HINTS[lvl];
+}
+document.querySelectorAll(".pilot-opt").forEach((b) =>
+  b.addEventListener("click", () => {
+    WERK.store.autopilot.set(Number(b.dataset.lvl));
+    renderPilot();
+    WERK.agentNote("Autopilot-Stufe geändert auf " + b.dataset.lvl + ". Gilt ab dem nächsten Erkennungslauf; bereits generierte Maßnahmen behalten ihren Weg.");
+  })
+);
+renderPilot();
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+  WERK.store.reset();
+  renderPilot();
+  WERK.agentNote("Demo-Daten zurückgesetzt — Fließband und Autopilot-Stufe stehen wieder auf dem Ausgangsstand.");
+});
+</script>
+</body>
+</html>

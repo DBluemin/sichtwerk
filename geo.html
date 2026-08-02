@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — GEO / KI-Zitationen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <div>
+        <h1>GEO / KI-Zitationen</h1>
+        <div class="lede">Generative Engine Optimization: Wird Ihre Praxis in ChatGPT, Gemini, Claude und Perplexity genannt und zitiert? Gemessen als Stichprobe mit Konfidenzintervall — keine Scheinpräzision.</div>
+      </div>
+      <div class="page-meta">GEO-Score: <b>58 (▲ 9)</b> · Zitationsrate: <b>14,2 % ± 3,1</b><br>Panel: <b>500 Prompts · 4 Systeme · täglich</b></div>
+    </header>
+
+    <div class="nw-banner">
+      <span class="nw-mark">NENNWERT</span>
+      <span>Messdaten der <b>NENNWERT-Engine</b> — dem Multi-LLM-Messwerk von DentalConnect.</span>
+      <span class="mono">nennwert.dental-connect.eu · Region EU (Amsterdam) · letzte Stichprobe heute, 05:30 · Fehlinfo-Verifizierung aktiv</span>
+    </div>
+
+    <section class="panel" aria-label="Zitationsentwicklung" style="margin-top:14px">
+      <div class="panel-head">
+        <div>
+          <div class="panel-title">Zitationsrate im Wettbewerb</div>
+          <div class="panel-sub">Anteil der Prompt-Stichproben, in denen die Domain zitiert wird — Monatsmittel</div>
+        </div>
+      </div>
+      <div class="chart-wrap" id="chartHost"></div>
+      <div class="chart-legend" id="legend"></div>
+    </section>
+
+    <div class="duo-even">
+      <section class="panel" aria-label="Engine-Aufschlüsselung">
+        <div class="panel-head"><div><div class="panel-title">Zitationsrate je System</div><div class="panel-sub">Letzte 30 Tage · smiledental-gruppe.de</div></div></div>
+        <div class="panel-body"><div class="hbars" id="engines"></div>
+          <div style="font-size:11.5px;color:var(--ink-3);margin-top:10px">Claude ist die offene Flanke: dort dominiert implantate-muenchen.de mit strukturierten Quellenseiten. Gegenmaßnahme rechts.</div>
+        </div>
+      </section>
+
+      <section class="panel" aria-label="Zitierfähigkeit">
+        <div class="panel-head"><div><div class="panel-title">Zitierfähigkeits-Checks</div><div class="panel-sub">Was KI-Systeme zum Zitieren brauchen</div></div></div>
+        <div class="list">
+          <div class="li"><div class="li-ico ico-good">✓</div><div class="li-body"><div class="li-title">llms.txt vorhanden und aktuell</div><div class="li-sub">Zuletzt regeneriert: 01.08. nach Sitemap-Änderung</div></div></div>
+          <div class="li"><div class="li-ico ico-good">✓</div><div class="li-body"><div class="li-title">KI-Bots erreichen die Seite</div><div class="li-sub">GPTBot 412, ClaudeBot 128, PerplexityBot 301 Zugriffe/Woche (Logfiles)</div></div></div>
+          <div class="li"><div class="li-ico ico-act">▢</div><div class="li-body"><div class="li-title">Quellenseite „Implantat-Preise München 2026" fehlt</div><div class="li-sub">KI-Systeme zitieren bevorzugt Seiten mit belegten Zahlen + Datum — Wettbewerber hat genau das</div></div><div class="li-side"><button class="fixbtn" data-fix="Content" data-title="Quellenseite: Implantat-Preise München 2026">Entwurf erstellen</button></div></div>
+          <div class="li"><div class="li-ico ico-act">▢</div><div class="li-body"><div class="li-title">Konsistente NAP-Daten auf 2 Portalen abweichend</div><div class="li-sub">jameda: alte Telefonnummer · Google Business Profile Augsburg: alte Öffnungszeiten</div></div><div class="li-side"><a class="fixbtn" href="lokal.html" style="text-decoration:none">Zu Lokal</a></div></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel" aria-label="Prompt-Panel">
+      <div class="panel-head"><div><div class="panel-title">Prompt-Panel <span class="cnt">Auszug 6 von 500</span></div><div class="panel-sub">Wer wird bei den wichtigsten Patientenfragen genannt? · Stichprobe heute, 05:30</div></div></div>
+      <div class="tblwrap">
+        <table class="tbl">
+          <thead><tr><th>Prompt</th><th>ChatGPT</th><th>Gemini</th><th>Claude</th><th>Perplexity</th><th style="text-align:right">Konfidenz</th></tr></thead>
+          <tbody>
+            <tr><td>„Was kostet ein Zahnimplantat in München?"</td><td><span class="tag tag-good">Sie zitiert</span></td><td><span class="tag tag-good">Sie zitiert</span></td><td><span class="tag tag-crit">Wettbewerber</span></td><td><span class="tag tag-good">Sie zitiert</span></td><td class="num">hoch (n=40)</td></tr>
+            <tr><td>„Bester Zahnarzt München Implantate"</td><td><span class="tag tag-crit">Wettbewerber</span></td><td><span class="tag tag-warn">Erwähnt</span></td><td><span class="tag tag-crit">Wettbewerber</span></td><td><span class="tag tag-warn">Erwähnt</span></td><td class="num">hoch (n=40)</td></tr>
+            <tr><td>„Invisalign oder feste Zahnspange?"</td><td><span class="tag tag-mut">Niemand</span></td><td><span class="tag tag-mut">Niemand</span></td><td><span class="tag tag-mut">Niemand</span></td><td><span class="tag tag-crit">Wettbewerber</span></td><td class="num">mittel (n=24)</td></tr>
+            <tr><td>„Zahnarzt Angstpatienten München"</td><td><span class="tag tag-warn">Erwähnt</span></td><td><span class="tag tag-good">Sie zitiert</span></td><td><span class="tag tag-mut">Niemand</span></td><td><span class="tag tag-good">Sie zitiert</span></td><td class="num">mittel (n=24)</td></tr>
+            <tr><td>„Wurzelbehandlung Kosten AOK"</td><td><span class="tag tag-crit">Fehlinfo ⚠</span></td><td><span class="tag tag-mut">Niemand</span></td><td><span class="tag tag-mut">Niemand</span></td><td><span class="tag tag-warn">Erwähnt</span></td><td class="num">mittel (n=24)</td></tr>
+            <tr><td>„Zahnklinik Augsburg Empfehlung"</td><td><span class="tag tag-good">Sie zitiert</span></td><td><span class="tag tag-warn">Erwähnt</span></td><td><span class="tag tag-mut">Niemand</span></td><td><span class="tag tag-good">Sie zitiert</span></td><td class="num">niedrig (n=12)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding:0 16px 14px;font-size:11.5px;color:var(--ink-3)">⚠ Fehlinfo: ChatGPT nennt bei AOK-Kostenübernahme einen veralteten Festzuschuss. NENNWERT-Verifizierung hat die Abweichung markiert — Gegenmaßnahme: aktualisierte Quellenseite (liegt als Entwurf-Vorschlag oben).</div>
+    </section>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "geo",
+  dock: {
+    context: "GEO — NENNWERT-Panel, 4 Systeme",
+    chips: ["Wie schließen wir die Claude-Lücke?", "Wie zuverlässig ist die Messung?"],
+    canned: {
+      "wie schließen wir die claude-lücke?": "Claude zitiert fast ausschließlich Seiten mit klarer Quellenstruktur: Zahlen mit Datum, Autorenschaft, saubere Gliederung. Drei Schritte: (1) Quellenseite „Implantat-Preise München 2026“ (Entwurf bereit), (2) Autorenboxen mit Facharzt-Nachweis (im Fließband), (3) H-Hierarchie-Fixes für die Gliederungs-Extraktion. Erwartung: erste Claude-Zitationen in 4–6 Wochen — als Stichprobe messbar, nicht garantierbar.",
+      "wie zuverlässig ist die messung?": "Es ist eine Stichprobe: 500 Prompts × 4 Systeme, täglich rotiert, mit Konfidenzintervall (aktuell ±3,1 pp). KI-Antworten variieren — deshalb weisen wir Bandbreiten aus statt Einzelwerten und markieren niedrige Stichprobengrößen. Trends über 4+ Wochen sind belastbar, Tageswerte nicht.",
+    },
+  },
+});
+const MONTHS = ["Sep","Okt","Nov","Dez","Jan","Feb","Mär","Apr","Mai","Jun","Jul","Aug"];
+WERK.chart(document.getElementById("chartHost"), {
+  labels: MONTHS, unit: " %", min: 0, max: 40, h: 240,
+  series: [
+    { name: "Sie", hex: "#3987e5", vals: [6,7,7,8,9,10,12,13,15,16,18,19] },
+    { name: "implantate-muenchen", hex: "#d95926", vals: [22,23,24,24,25,26,26,27,27,28,28,29] },
+    { name: "dr-weber-zahnklinik", hex: "#199e70", vals: [11,11,12,12,13,12,13,14,13,14,14,15] },
+    { name: "zahnzentrum-sued", hex: "#c98500", vals: [3,3,4,4,4,5,5,5,6,6,6,7] },
+  ],
+});
+WERK.legend(document.getElementById("legend"), [
+  { name: "Sie — smiledental-gruppe.de", hex: "#3987e5" },
+  { name: "implantate-muenchen.de", hex: "#d95926" },
+  { name: "dr-weber-zahnklinik.de", hex: "#199e70" },
+  { name: "zahnzentrum-sued.de", hex: "#c98500" },
+]);
+WERK.hbars(document.getElementById("engines"), [
+  { label: "ChatGPT", val: 19, max: 30, display: "19 %" },
+  { label: "Perplexity", val: 16, max: 30, display: "16 %" },
+  { label: "Gemini", val: 11, max: 30, display: "11 %" },
+  { label: "Claude", val: 6, max: 30, display: "6 %" },
+]);
+WERK.bindFixButtons();
+</script>
+</body>
+</html>

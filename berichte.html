@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SICHTWERK — Berichte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/werk.css">
+</head>
+<body>
+<div class="app">
+  <nav class="nav" id="navRoot" aria-label="Hauptnavigation"></nav>
+
+  <main class="main">
+    <div class="topbar" id="topbarRoot"></div>
+
+    <header class="page-head">
+      <div>
+        <h1>Berichte</h1>
+        <div class="lede">Berichte sind hier Nebenprodukt, nicht Kern: Sie dokumentieren, was das System getan und bewirkt hat — inklusive dem, was nicht funktioniert hat.</div>
+      </div>
+      <div class="page-meta">Versand: <b>monatlich, 1. Werktag 08:00</b><br>Empfänger: <b>3</b> · Format: <b>PDF + Web-Link</b></div>
+    </header>
+
+    <section class="panel" aria-label="Berichtsvorlagen">
+      <div class="panel-head"><div><div class="panel-title">Vorlagen</div><div class="panel-sub">Jeder Bericht enthält den Maßnahmen-Nachweis: was live ging, was es bewirkte, was zurückgenommen wurde</div></div></div>
+      <div class="reports">
+        <div class="report-card">
+          <div class="r-name">Monats-Report</div>
+          <div class="r-desc">Sichtbarkeit, KI-Zitationen, alle Maßnahmen mit Wirkung, nächste Prioritäten. 6–8 Seiten.</div>
+          <button class="btn" data-gen>Generieren</button>
+        </div>
+        <div class="report-card">
+          <div class="r-name">Inhaber-One-Pager</div>
+          <div class="r-desc">Eine Seite für die Praxisleitung: 3 Zahlen, 3 Ergebnisse, 1 Entscheidung die ansteht.</div>
+          <button class="btn" data-gen>Generieren</button>
+        </div>
+        <div class="report-card">
+          <div class="r-name">Maßnahmen-Protokoll (Audit)</div>
+          <div class="r-desc">Lückenlos: jedes Change-Set mit Freigebendem, Zeitstempel, Diff und Rollback-Status. CSV/PDF.</div>
+          <button class="btn" data-gen>Generieren</button>
+        </div>
+        <div class="report-card">
+          <div class="r-name">KI-Sichtbarkeits-Report</div>
+          <div class="r-desc">NENNWERT-Panel: Zitationsraten je System, Fehlinfo-Funde, Wettbewerbsvergleich, Konfidenzen.</div>
+          <button class="btn" data-gen>Generieren</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Letzte Berichte">
+      <div class="panel-head"><div><div class="panel-title">Letzte Berichte</div></div></div>
+      <div class="tblwrap">
+        <table class="tbl">
+          <thead><tr><th>Bericht</th><th>Zeitraum</th><th>Erstellt</th><th style="text-align:right">Kernaussage</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><b>Monats-Report Juli</b></td><td class="mono">01.07.–31.07.</td><td class="mono">01.08. 08:00</td><td class="num tr-up">Sichtbarkeit +6 · 14 Sets wirksam</td><td><a class="fixbtn" href="#" onclick="return false;" style="text-decoration:none">Öffnen</a></td></tr>
+            <tr><td><b>KI-Sichtbarkeits-Report Juli</b></td><td class="mono">01.07.–31.07.</td><td class="mono">01.08. 08:00</td><td class="num tr-up">Zitationsrate 14 → 19 %</td><td><a class="fixbtn" href="#" onclick="return false;" style="text-decoration:none">Öffnen</a></td></tr>
+            <tr><td><b>Maßnahmen-Protokoll Q2</b></td><td class="mono">01.04.–30.06.</td><td class="mono">01.07. 08:00</td><td class="num">61 Sets · 3 Rücknahmen</td><td><a class="fixbtn" href="#" onclick="return false;" style="text-decoration:none">Öffnen</a></td></tr>
+            <tr><td><b>Monats-Report Juni</b></td><td class="mono">01.06.–30.06.</td><td class="mono">01.07. 08:00</td><td class="num tr-up">Antwortbox gewonnen · CTR +0,9 pp</td><td><a class="fixbtn" href="#" onclick="return false;" style="text-decoration:none">Öffnen</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <aside class="dock" id="dockRoot" aria-label="KI-Agent"></aside>
+</div>
+
+<script src="assets/werk.js"></script>
+<script>
+WERK.init({
+  page: "berichte",
+  dock: {
+    context: "Berichte",
+    chips: ["Fasse den Juli zusammen"],
+    canned: {
+      "fasse den juli zusammen": "Juli in drei Sätzen: Sichtbarkeit +6 Punkte auf 68 — der Rückstand zum Marktführer ist auf 3 Punkte geschmolzen. 14 von 16 ausgespielten Change-Sets waren messbar wirksam, die KI-Zitationsrate stieg von 14 auf 19 %. Offene Entscheidung: Autopilot-Stufe 2 für Bagatellen, das würde ~40 % Ihrer Freigabe-Klicks sparen.",
+    },
+  },
+});
+document.querySelectorAll("[data-gen]").forEach((btn) =>
+  btn.addEventListener("click", () => {
+    btn.disabled = true;
+    btn.textContent = "Wird erstellt …";
+    setTimeout(() => {
+      btn.textContent = "Bereit · Öffnen";
+      btn.disabled = false;
+      WERK.agentNote("Bericht erstellt — im Prototyp ohne PDF-Export; im Produkt: PDF + signierter Web-Link.");
+    }, 1200);
+  })
+);
+</script>
+</body>
+</html>
